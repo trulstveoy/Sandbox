@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<license id="5e48b4a5-a1e2-4485-82da-0c8e0194456c" expiration="9999-12-31T23:59:59.9999999" type="Standard" LicenseVersion="3.2" LicenseType="Express" MaxMessageThroughputPerSecond="Max" WorkerThreads="1" AllowedNumberOfWorkerNodes="2">
+  <name>Truls Tveoy</name>
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+    <SignedInfo>
+      <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+      <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+      <Reference URI="">
+        <Transforms>
+          <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <DigestValue>dlcjII5BfRi5ctm6bQLzErllRM4=</DigestValue>
+      </Reference>
+    </SignedInfo>
+    <SignatureValue>17KnixQitvp/sc7pkBP/yudRCtM6ArbLYTxGXWSWD2pqSVhmVX3CuaL3MZNvHLOeFNaU/Me5ob52NyEixTgG0KOX+F2l2V6JClKd6h1GZjWAFAJFBY7L+tx00JE/7OodoJoSg7kf6/DrjtieUNykaZ9JD8PQkKyBfMtgil+xZLI=</SignatureValue>
+  </Signature>
+</license>
