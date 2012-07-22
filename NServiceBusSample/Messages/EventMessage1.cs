@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Messages
+﻿namespace Messages
 {
+    using System;
+
     public interface IEventMessage1
     {
         string Text { get; set; }

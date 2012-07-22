@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleHost", "SampleHost\SampleHost.csproj", "{3150493A-E6E0-4CD2-905D-E89230B711A8}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Publisher1", "Publisher1\Publisher1.csproj", "{D53A7F0D-DEBA-420B-AD3C-6786D52A19E2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messages", "Messages\Messages.csproj", "{F1AB02CE-7BCF-45E7-BABA-84CA04DD2D97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subscriber1", "Subscriber1\Subscriber1.csproj", "{C6BC1EFC-C7CA-4026-870E-AA68C91E3756}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,10 +13,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3150493A-E6E0-4CD2-905D-E89230B711A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3150493A-E6E0-4CD2-905D-E89230B711A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3150493A-E6E0-4CD2-905D-E89230B711A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3150493A-E6E0-4CD2-905D-E89230B711A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6BC1EFC-C7CA-4026-870E-AA68C91E3756}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6BC1EFC-C7CA-4026-870E-AA68C91E3756}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6BC1EFC-C7CA-4026-870E-AA68C91E3756}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6BC1EFC-C7CA-4026-870E-AA68C91E3756}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D53A7F0D-DEBA-420B-AD3C-6786D52A19E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D53A7F0D-DEBA-420B-AD3C-6786D52A19E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D53A7F0D-DEBA-420B-AD3C-6786D52A19E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
