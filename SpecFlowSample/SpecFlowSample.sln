@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorldSpecs", "HelloWorldSpecs\HelloWorldSpecs.csproj", "{71D9360B-BF96-48AA-A9ED-11825DA03E9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorld", "HelloWorld\HelloWorld.csproj", "{E5E9DA49-FBED-4BE3-8410-E9295FA74A41}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{71D9360B-BF96-48AA-A9ED-11825DA03E9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71D9360B-BF96-48AA-A9ED-11825DA03E9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71D9360B-BF96-48AA-A9ED-11825DA03E9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71D9360B-BF96-48AA-A9ED-11825DA03E9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5E9DA49-FBED-4BE3-8410-E9295FA74A41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5E9DA49-FBED-4BE3-8410-E9295FA74A41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5E9DA49-FBED-4BE3-8410-E9295FA74A41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5E9DA49-FBED-4BE3-8410-E9295FA74A41}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
