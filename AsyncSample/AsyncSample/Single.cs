@@ -4,7 +4,7 @@ namespace AsyncSample
     using System.Threading;
     using System.Threading.Tasks;
 
-    internal class Foo
+    internal class Single
     {
         public void Run()
         {
@@ -13,6 +13,8 @@ namespace AsyncSample
             Console.WriteLine(DateTime.Now);
             Console.WriteLine(task.Result);
         }
+
+        
 
         private async Task<string> Bar()
         {
