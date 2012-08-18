@@ -4,7 +4,7 @@ namespace AsyncSample
     using System.Threading;
     using System.Threading.Tasks;
 
-    internal class Single
+    public class Single
     {
         public void Run()
         {
@@ -16,7 +16,7 @@ namespace AsyncSample
 
         
 
-        private async Task<string> Bar()
+        public async Task<string> Bar()
         {
             return await Task.Run(() =>
                                 {
