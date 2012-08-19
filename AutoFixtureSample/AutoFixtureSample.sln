@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoFixtureSample", "AutoFixtureSample\AutoFixtureSample.csproj", "{56C89E7F-35CF-4168-8ABE-74C877AC9A2B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoFixtureSample.Tests", "AutoFixtureSample.Tests\AutoFixtureSample.Tests.csproj", "{EA5BD75F-BA89-44DC-91C6-3D55BAE4E97B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{56C89E7F-35CF-4168-8ABE-74C877AC9A2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56C89E7F-35CF-4168-8ABE-74C877AC9A2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56C89E7F-35CF-4168-8ABE-74C877AC9A2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56C89E7F-35CF-4168-8ABE-74C877AC9A2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA5BD75F-BA89-44DC-91C6-3D55BAE4E97B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA5BD75F-BA89-44DC-91C6-3D55BAE4E97B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA5BD75F-BA89-44DC-91C6-3D55BAE4E97B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA5BD75F-BA89-44DC-91C6-3D55BAE4E97B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
