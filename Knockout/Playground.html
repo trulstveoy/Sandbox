@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Knockout playground</title>
+    <script type="text/javascript" src="jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="knockout-2.1.0.js"></script>
+</head>
+<body>
+    <section class="tab" id="section1">
+        <p>First name: <input data-bind="value: firstName" /></p>
+        <p>Last name: <input data-bind="value: lastName" /></p>
+        <h2>Hello, <span data-bind="text: fullName"> </span>!</h2>
+    </section>
+    <section class="tab" id="section2">
+        <div>You've clicked <span data-bind='text: numberOfClicks'>&nbsp;</span> times</div> 
+        <button data-bind='click: registerClick, disable: hasClickedTooManyTimes'>Click me</button> 
+        <div data-bind='visible: hasClickedTooManyTimes'>
+            That's too many clicks! Please stop before you wear out your fingers.
+            <button data-bind='click: resetClicks'>Reset clicks</button>
+        </div>
+    </section>
+</body>
+</html>
+
+<script type="text/javascript">
+    var ViewModel = function (first, last) {
+        this.firstName = ko.observable(first);
+        this.lastName = ko.observable(last);
+
+        this.fullName = ko.computed(function () {
+            return this.firstName() + " " + this.lastName();
+        }, this);
+    };
+
+    ko.applyBindings(new ViewModel("Planet", "Earth"), $("#section1")[0]); 
+
+    var ClickCounterViewModel = function () {
+        this.numberOfClicks = ko.observable(0);
+
+        this.registerClick = function () {
+            this.numberOfClicks(this.numberOfClicks() + 1);
+        };
+
+        this.resetClicks = function () {
+            this.numberOfClicks(0);
+        };
+
+        this.hasClickedTooManyTimes = ko.computed(function () {
+            return this.numberOfClicks() >= 3;
+        }, this);
+    };
+
+    ko.applyBindings(new ClickCounterViewModel(), $("#section2")[0]);
+</script>

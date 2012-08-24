@@ -1,0 +1,14 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{024B03B7-C862-4E00-B57F-1BC004FBCA81}"
+	ProjectSection(SolutionItems) = preProject
+		knockout-2.1.0.js = knockout-2.1.0.js
+		Playground.html = Playground.html
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
