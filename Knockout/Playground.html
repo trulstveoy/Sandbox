@@ -22,7 +22,9 @@
         </section>
     
         <section id="section3">
-            <div data-bind="template: { name: 'output-template', data: outputData }"></div>
+            
+            <div data-bind="template: { name: template(), data: data }"></div> 
+            
             <div>
                 <button data-bind='click: left'>left</button>
                 <button data-bind='click: right'>right</button>
@@ -33,8 +35,8 @@
     </body>
 </html>
 
-<script type="text/html" id="output-template">
-    <input data-bind="value: output" />
+<script type="text/html" id="left-template">
+    <h1><input data-bind="value: output" /></h1>
 </script>
 
 <script type="text/javascript">
@@ -67,15 +69,21 @@
 
     ko.applyBindings(new ClickCounterViewModel(), $("#section2")[0]);
     
-    var Section3ViewModel = function() {
-        this.outputData = ko.observable({output: "default"});
+    function Model(template, data) {
+        this.template = ko.observable(template);
+        this.data = data;
+    }
+    
+    var Section3ViewModel = function () {
+        debugger;
+        this.data = ko.observable(new Model("left-template", { data: "default" }));
 
         this.right = function() {
-            this.outputData({ output: "right" });
+            this.data({ output: "right" });
         };
         
         this.left = function () {
-            this.outputData({ output: "left" });
+            this.data({ output: "left" });
         };
     };
     
