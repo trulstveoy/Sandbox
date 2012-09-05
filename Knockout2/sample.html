@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<script type="text/javascript" src="knockout-2.1.0.js"></script>
+	</head>
+	<body>
+	
+		<select data-bind="options: models, optionsText: 'key', optionsCaption: 'select a model...', value: selectedModel"></select>
+		<hr />
+
+		<div data-bind="with: selectedModel">
+			<div data-bind="template: { name: template(), data: data }"></div>    
+		</div>
+
+	</body>
+</html>
+
+<script id="userTmpl" type="text/html">
+    <span data-bind="text: last"></span>, <span data-bind="text: first"></span>
+</script>
+
+<script id="itemTmpl" type="text/html">
+    <h3 data-bind="text: name"></h3>
+    <div data-bind="text: description"></div>
+</script>
+
+<script type="text/javascript">
+
+function Model(key, template, data) {
+   this.key = key;
+   this.template = ko.observable(template);
+   this.data = data; 
+}
+
+var viewModel = {
+   models: ko.observableArray([
+       new Model("user", "userTmpl", { first: "Bob", last: "Smith" }),
+       new Model("item", "itemTmpl", { name: "MyItem", description: "Here are some details" })
+   ]),
+   selectedModel: ko.observable()
+};
+
+                    
+ko.applyBindings(viewModel);
+
+</script>
