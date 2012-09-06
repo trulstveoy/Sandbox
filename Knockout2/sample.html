@@ -1,18 +1,30 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<script type="text/javascript" src="knockout-2.1.0.js"></script>
-	</head>
-	<body>
-	
-		<select data-bind="options: models, optionsText: 'key', optionsCaption: 'select a model...', value: selectedModel"></select>
-		<hr />
+<head>
+    <title>Knockout playground</title>
+    <script type="text/javascript" src="knockout-2.1.0.js"></script>
+    <script type="text/javascript" src="jquery-1.8.0.min.js"></script>
+</head>
+<body>
+    <section id="section1">
+        <select data-bind="options: models, optionsText: 'key', optionsCaption: 'select a model...', value: selectedModel"></select>
+        <hr />
 
-		<div data-bind="with: selectedModel">
-			<div data-bind="template: { name: template(), data: data }"></div>    
-		</div>
+        <div data-bind="with: selectedModel">
+            <div data-bind="template: { name: template(), data: data }"></div>
+        </div>
+    </section>
 
-	</body>
+    <section id="section2">
+        
+        <button data-bind='click: big'>big</button>
+        <button data-bind='click: small'>small</button>
+        <div data-bind='text: selection'></div>
+        <div data-bind="template: { name: template() }"></div>        
+    </section>
+
+
+</body>
 </html>
 
 <script id="userTmpl" type="text/html">
@@ -24,23 +36,55 @@
     <div data-bind="text: description"></div>
 </script>
 
+<script id="bigTmpl" type="text/html">
+    <h1>big</h1>
+    <h1 data-bind="text: name"></h1>
+</script>
+
+<script id="smallTmp" type="text/html"> 
+    <h3>small</h3>   
+    <h3 data-bind="text: name"></h3>     
+</script>
+
+
 <script type="text/javascript">
 
-function Model(key, template, data) {
-   this.key = key;
-   this.template = ko.observable(template);
-   this.data = data; 
-}
+    function Model(key, template, data) {
+        this.key = key;
+        this.template = ko.observable(template);
+        this.data = data;
+    }
+    
+    var section1ViewModel = function() {
+        this.models = ko.observableArray([
+            new Model("user", "userTmpl", { first: "Bob", last: "Smith" }),
+            new Model("item", "itemTmpl", { name: "MyItem", description: "Here are some details" })
+        ]);
+        
+        this.selectedModel = ko.observable();
+    };
 
-var viewModel = {
-   models: ko.observableArray([
-       new Model("user", "userTmpl", { first: "Bob", last: "Smith" }),
-       new Model("item", "itemTmpl", { name: "MyItem", description: "Here are some details" })
-   ]),
-   selectedModel: ko.observable()
-};
+    ko.applyBindings(new section1ViewModel(), $("#section1")[0]);
 
-                    
-ko.applyBindings(viewModel);
+    var section2ViewModel = function() {
+
+        this.selection = ko.observable("nothing yet");
+
+        this.big = function() {
+            this.selection("big");
+
+
+
+        };
+        
+        this.small = function () {
+            this.selection("small");
+                
+
+        };
+
+    };
+
+    ko.applyBindings(new section2ViewModel(), $("#section2")[0]);
 
 </script>
