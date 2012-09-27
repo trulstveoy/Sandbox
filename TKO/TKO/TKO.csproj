@@ -139,7 +139,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Views\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -149,6 +148,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".htaccess" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\shell.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\app\vm.shell.js" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
