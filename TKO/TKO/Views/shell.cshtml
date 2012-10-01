@@ -1,5 +1,22 @@
 ﻿<section id="shell-view">
-    <h1>Shell</h1>
-    <div data-bind='text: name'></div>
+    
+    <div class="black_border">
+        <h1 data-bind="text: title"></h1>
+        <input data-bind='value: title' />
+    
+
+        <table>
+            <tr>
+                <td>
+                    <div data-bind="template: { name: 'leftTemplate' }"></div>
+                </td>
+            
+                <td>
+                    <div data-bind="template: { name: 'rightTemplate' }"></div>
+                </td>
+            </tr>
+        </table>
+    
+    </div>
 
 </section> 

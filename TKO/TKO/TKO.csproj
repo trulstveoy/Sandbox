@@ -120,8 +120,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\styles.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\app\bootstrapper.js" />
+    <Content Include="Scripts\app\vm.right.js" />
+    <Content Include="Scripts\app\vm.left.js" />
     <Content Include="Scripts\lib\jquery-1.7.2.js" />
     <Content Include="Scripts\lib\knockout-2.1.0.js" />
     <Content Include="Scripts\lib\require.js" />
@@ -147,13 +150,16 @@
     <Content Include="index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".htaccess" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\shell.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\app\vm.shell.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\left.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\right.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

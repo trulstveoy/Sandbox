@@ -20,4 +20,4 @@
 
     defineDependencies();
     boot();
-})();
+}());

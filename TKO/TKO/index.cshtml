@@ -4,11 +4,14 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width" />
+         <link rel="stylesheet" href="Content/styles.css">
         <title>Technical Knock Out</title>
     </head>
 <body>
-    <section class="main">
+    <section id="shell-view">
         @RenderPage("Views/shell.cshtml")
+        @RenderPage("Views/left.cshtml")
+        @RenderPage("Views/right.cshtml")
     </section>
     
     @Scripts.Render(

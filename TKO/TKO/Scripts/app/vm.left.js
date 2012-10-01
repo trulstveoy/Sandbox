@@ -1,11 +1,11 @@
 ﻿/*global define */
 /*jslint white: true */
-define('vm.shell',
-    ['ko', 'sammy'],
+define('vm.left',
+    ['ko'],
     function(ko) {
         "use strict";
     
-        var title = ko.observable("Shell view");
+        var title = ko.observable("Left view");
 
         return {
             title: title

@@ -1,0 +1,14 @@
+﻿body {
+}
+
+div.black_border {
+    border: 3px solid black; 
+}
+
+div.red_border {
+    border: 3px solid red; 
+}
+
+div.blue_border {
+    border: 3px solid blue; 
+}
