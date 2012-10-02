@@ -5,9 +5,9 @@ define('vm.right',
     function(ko) {
         "use strict";
     
-        var rightTitle = ko.observable("Right view");
+        var title = ko.observable("Right view");
 
         return {
-            rightTitle: rightTitle
+            title: title
         };
 	});
