@@ -7,11 +7,22 @@ define('vm.product',
 
         var title = ko.observable("Product"),
             templateName = ko.observable("productTemplate"),
-            calories = ko.observable(3200);
+            calories = ko.observable(3200),
+            onObserveCalories,
+            observeCalories = function(onObserveCaloriesParam) {
+                onObserveCalories = onObserveCaloriesParam;
+            };
+
+        calories.subscribe(function (newValue) {
+            if (onObserveCalories) {
+                onObserveCalories(newValue);
+            }
+        });
 
         return {
             title: title,
             templateName: templateName,
-            calories: calories
+            calories: calories,
+            observeCalories: observeCalories
         };
 	});
