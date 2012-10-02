@@ -1,20 +1,19 @@
 ﻿/*global define */
 /*jslint white: true */
 define('vm.shell',
-    ['ko', 'sammy', 'vm.left', 'vm.right'],
-    function(ko, sammy, leftVm, rightVm) {
+    ['ko', 'sammy', 'vm.customer', 'vm.product'],
+    function(ko, sammy, customerVm, productVm) {
         "use strict";
     
         var title = ko.observable("Shell view"),
-            leftViewModel = leftVm,
-            rightViewModel = rightVm,
+            leftViewModel = ko.observable(customerVm),
+            rightViewModel = ko.observable(productVm),
             swapViews = function () {
-                var name1 = leftViewModel.getTemplate(),
-                    name2 = rightViewModel.getTemplate();
 
-                leftViewModel.setTemplate(name2);
-                rightViewModel.setTemplate(name1);
-                    
+                var temp1 = leftViewModel(),
+                    temp2 = rightViewModel();
+                leftViewModel(temp2);
+                rightViewModel(temp1);
             };
 
         return {
