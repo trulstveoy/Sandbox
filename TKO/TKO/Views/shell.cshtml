@@ -3,16 +3,19 @@
     <div class="black_border">
         <h1 data-bind="text: title"></h1>
         <input data-bind='value: title' />
-    
 
         <table>
             <tr>
                 <td>
-                    <div data-bind="template: { name: 'leftTemplate' }"></div>
+                    <div data-bind="with: leftViewModel">
+                        <div data-bind="template: { name: 'leftTemplate' }"></div>
+                    </div>
                 </td>
             
                 <td>
-                    <div data-bind="template: { name: 'rightTemplate' }"></div>
+                    <div data-bind="with: rightViewModel">
+                        <div data-bind="template: { name: 'rightTemplate' }"></div>
+                    </div>
                 </td>
             </tr>
         </table>
