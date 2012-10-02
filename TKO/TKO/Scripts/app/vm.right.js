@@ -4,10 +4,16 @@ define('vm.right',
     ['ko'],
     function(ko) {
         "use strict";
-    
-        var title = ko.observable("Right view");
+
+        var title = ko.observable("Right view"),
+            getTemplate = ko.observable("rightTemplate"),
+            setTemplate = function (templateName) {
+                getTemplate(templateName);
+            };
 
         return {
-            title: title
+            title: title,
+            getTemplate: getTemplate,
+            setTemplate: setTemplate
         };
 	});
