@@ -4,12 +4,12 @@ define('vm.shell',
     ['ko', 'sammy', 'vm.customer', 'vm.product'],
     function(ko, sammy, customerVm, productVm) {
         "use strict";
-        
+
         var title = ko.observable("Shell view"),
-            announcement = ko.observable("Eat burger, live happy"),
+            announcement = ko.observable("Eat burger?"),
             leftViewModel = ko.observable(customerVm),
             rightViewModel = ko.observable(productVm),
-            swapViews = function () {
+            swapViews = function() {
                 var temp1 = leftViewModel(),
                     temp2 = rightViewModel();
                 leftViewModel(temp2);
@@ -20,6 +20,7 @@ define('vm.shell',
 
             if (calories > 3200) {
                 announcement("Eat burger, die happy");
+                customerVm.decreaseLifespan();
             }
             else {
                 announcement("Eat burger, die hungry");
@@ -32,6 +33,5 @@ define('vm.shell',
             leftViewModel: leftViewModel,
             rightViewModel: rightViewModel,
             swapViews: swapViews
-            
         };
 	});
