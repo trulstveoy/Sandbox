@@ -14,10 +14,25 @@ define('vm.shell',
                     temp2 = rightViewModel();
                 leftViewModel(temp2);
                 rightViewModel(temp1);
-            };
+            },
+            navigation = sammy(function() {
+
+                this.get('#ABC', function (context) {
+                    alert(context.path);
+                });
+            
+                this.get('#123', function (context) {
+                    alert(context.path);
+                });
+            
+                this.get('#XYZ', function (context) {
+                    alert(context.path);
+            });
+        });
+        
+        navigation.run();
         
         productVm.observeCalories(function (calories) {
-
             if (calories > 3200) {
                 announcement("Eat burger, die happy");
                 customerVm.decreaseLifespan();

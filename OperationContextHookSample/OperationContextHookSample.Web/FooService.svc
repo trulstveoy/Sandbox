@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Service="OperationContextHookSample.FooService" Factory="OperationContextHookSample.Web.CustomServiceHostFactory" %>

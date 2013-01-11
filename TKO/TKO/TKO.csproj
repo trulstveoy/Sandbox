@@ -125,6 +125,8 @@
     <Content Include="Content\styles.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\app\bootstrapper.js" />
+    <Content Include="Scripts\app\vm.context1.js" />
+    <Content Include="Scripts\app\vm.context2.js" />
     <Content Include="Scripts\app\vm.product.js" />
     <Content Include="Scripts\app\vm.customer.js" />
     <Content Include="Scripts\lib\jquery-1.7.2.js" />
@@ -162,6 +164,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\product.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\context1.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\context2.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

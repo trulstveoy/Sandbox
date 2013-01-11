@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StateMachine", "StateMachine\StateMachine.csproj", "{F146DFB0-0C67-435D-8E09-CFF3BC0F7DCC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StateMachine.Tests", "StateMachine.Tests\StateMachine.Tests.csproj", "{6B3DE9B6-4B90-47B6-AAD6-85E3E359B8AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F146DFB0-0C67-435D-8E09-CFF3BC0F7DCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F146DFB0-0C67-435D-8E09-CFF3BC0F7DCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F146DFB0-0C67-435D-8E09-CFF3BC0F7DCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F146DFB0-0C67-435D-8E09-CFF3BC0F7DCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B3DE9B6-4B90-47B6-AAD6-85E3E359B8AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B3DE9B6-4B90-47B6-AAD6-85E3E359B8AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B3DE9B6-4B90-47B6-AAD6-85E3E359B8AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B3DE9B6-4B90-47B6-AAD6-85E3E359B8AF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
