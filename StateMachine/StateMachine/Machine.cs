@@ -1,57 +1,59 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-using System.Linq.Expressions;
+using System.Reflection;
+using StateMachine.Configuration;
 
 namespace StateMachine
 {
     public class Machine
     {
-        private readonly List<Prerequisite> _prerequisites = new List<Prerequisite>(); 
+        private readonly List<Prerequisite> _prerequisites = new List<Prerequisite>();
+        private readonly List<State> _states = new List<State>();
+        private readonly List<Rule> _rules = new List<Rule>(); 
 
         public void Configure(Action<Prerequisite> action)
         {
             var prerequisite = new Prerequisite();
             action(prerequisite);
             _prerequisites.Add(prerequisite);
+            _rules.Add(prerequisite.Rule);
         }
 
         public string GetDescriptions()
         {
-            return string.Join(",", _prerequisites.Select(x => x.Description));
+            return string.Join(" | ", _prerequisites.Select(x => x.GetDescription()));
         }
 
-        public void Run(State state)
+        public void Initialize(State[] states)
         {
-            state.Execute();
-        }
-    }
+            _states.AddRange(states);
 
-    public class Prerequisite
-    {
-        public Prerequisite()
-        {
-            Description = "";
-        }
+            var state = _states.First();
 
-        public string Description { get; private set; }
+            RuleElement ruleElement = _rules.Select(x => x.GetRuleElement(state.GetType())).First(x => x != null);
 
-        public Prerequisite Setup<T>(Expression<Func<T, object>> expression)
-        {
-            string sourceName = typeof (T).Name;
-            
-            var memberExpression = (MemberExpression) expression.Body;
-            var eventName = memberExpression.Member.Name;
+            foreach (var sourceEvent in ruleElement.SourceEvents)
+            {
+                var propertyInfo = (PropertyInfo)sourceEvent;
 
-            Description += string.Format(" {0}.{1}", sourceName, eventName);
+                propertyInfo.SetValue(state, new Action(() => { ReachedState(sourceEvent.Name); }));
 
-            return this;
+            }
         }
 
-        public Prerequisite TransitionTo<T2>()
+        public void Process()
         {
-            Description += string.Format(" {0}",  typeof (T2).Name);
-            return this;
+            foreach (var currentState in _states)
+            {
+                currentState.Execute();
+            }
+        }
+
+        private void ReachedState(string name)
+        {
+            Trace.WriteLine("Reached state" + name);
         }
     }
 }

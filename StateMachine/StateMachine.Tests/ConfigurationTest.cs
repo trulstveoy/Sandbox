@@ -11,26 +11,25 @@ namespace StateMachine.Tests
         {
             var machine = new Machine();
             machine.Configure(p => p
-                 .Setup<StateA>(x => x.EventA)
-                 .Setup<StateA>(x => x.EventB)
+                 .Setup<StateA>(x => x.Reached5)
+                 .Setup<StateA>(x => x.Reaced10)
                      .TransitionTo<StateB>()          
                      .TransitionTo<StateC>());
 
             machine.Configure(p => p
-                .Setup<StateB>(x => x.EventC)
-                .Setup<StateC>(x => x.EventD)
+                .Setup<StateB>(x => x.Reached15)
+                .Setup<StateC>(x => x.Reached20)
                     .TransitionTo<StateD>());
 
             string descriptions = machine.GetDescriptions();
+            
+            machine.Initialize(new State[] {new StateA(), new StateB(), new StateC(), new StateD()});
 
-
-            var currentState = new StateA();
-
-            machine.Run(currentState);
-
-
-
-
+            for (int i = 0; i < 50; i++)
+            {
+                machine.Process();
+                App.Worker.Increase();
+            }
         }
     }
 }

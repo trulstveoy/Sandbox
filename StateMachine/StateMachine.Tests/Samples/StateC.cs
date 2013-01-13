@@ -1,7 +1,17 @@
-﻿namespace StateMachine.Tests.Samples
+﻿using System;
+
+namespace StateMachine.Tests.Samples
 {
-    public class StateC
+    public class StateC : State
     {
-        public Event EventD { get; set; } 
+        public Action Reached20 { get; set; }
+
+        public override void Execute()
+        {
+            if (App.Worker.Value == 20)
+            {
+                Reached20();
+            }
+        }
     }
 }
