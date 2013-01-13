@@ -34,12 +34,13 @@ namespace StateMachine
 
             RuleElement ruleElement = _rules.Select(x => x.GetRuleElement(state.GetType())).First(x => x != null);
 
+            var actions = new List<Action>();
             foreach (var sourceEvent in ruleElement.SourceEvents)
             {
                 var propertyInfo = (PropertyInfo)sourceEvent;
-
                 propertyInfo.SetValue(state, new Action(() => { ReachedState(sourceEvent.Name); }));
-
+                var action = (Action) propertyInfo.GetValue(state);
+                actions.Add(action);
             }
         }
 
