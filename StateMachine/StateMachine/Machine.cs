@@ -38,18 +38,28 @@ namespace StateMachine
             foreach (var sourceEvent in ruleElement.SourceEvents)
             {
                 var propertyInfo = (PropertyInfo)sourceEvent;
-                propertyInfo.SetValue(state, new Action(() => { ReachedState(sourceEvent.Name); }));
-                var action = (Action) propertyInfo.GetValue(state);
+                var action = (Action)propertyInfo.GetValue(state);
+                propertyInfo.SetValue(state, new Action(() => { ReachedState(action, actions); }));
                 actions.Add(action);
+            }
+        }
+
+        private void ReachedState(Action action, List<Action> actions)
+        {
+            if (actions.Contains(action))
+            {
+                actions.Remove(action);
+            }
+            if (actions.Count == 0)
+            {
+                
             }
         }
 
         public void Process()
         {
-            foreach (var currentState in _states)
-            {
-                currentState.Execute();
-            }
+            var state = _states.First();
+            state.Execute();
         }
 
         private void ReachedState(string name)
