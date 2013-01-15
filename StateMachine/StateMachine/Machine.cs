@@ -34,37 +34,45 @@ namespace StateMachine
 
             RuleElement ruleElement = _rules.Select(x => x.GetRuleElement(state.GetType())).First(x => x != null);
 
-            var actions = new List<Action>();
+            var stateNames = new List<string>();
             foreach (var sourceEvent in ruleElement.SourceEvents)
             {
                 var propertyInfo = (PropertyInfo)sourceEvent;
-                var action = (Action)propertyInfo.GetValue(state);
-                propertyInfo.SetValue(state, new Action(() => { ReachedState(action, actions); }));
-                actions.Add(action);
+                var action = new Action(() =>
+                                            {
+                                                if (StateReached(propertyInfo.Name, stateNames))
+                                                {
+                                                    AdvanceState();
+                                                }
+                                            });
+                propertyInfo.SetValue(state, action);
+                stateNames.Add(propertyInfo.Name);
             }
         }
 
-        private void ReachedState(Action action, List<Action> actions)
+        private bool StateReached(string state, List<string> states)
         {
-            if (actions.Contains(action))
+            if (states.Contains(state))
             {
-                actions.Remove(action);
+                states.Remove(state);
             }
-            if (actions.Count == 0)
+            if (states.Count == 0)
             {
-                
+                return true;
             }
+
+            return false;
+        }
+
+        private void AdvanceState()
+        {
+           
         }
 
         public void Process()
         {
             var state = _states.First();
             state.Execute();
-        }
-
-        private void ReachedState(string name)
-        {
-            Trace.WriteLine("Reached state" + name);
         }
     }
 }

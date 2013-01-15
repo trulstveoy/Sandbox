@@ -9,6 +9,8 @@ namespace DelegatePlayground
             var a = new Foo();
             var b = new Foo();
 
+            
+
             var action = (Action)Delegate.Combine(new Delegate[] {a.Bar, b.Bar});
             action();
 
