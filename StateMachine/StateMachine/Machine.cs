@@ -12,9 +12,9 @@ namespace StateMachine
         private readonly IStateFactory _stateFactory;
         private readonly IStatePersister _persister;
         private readonly List<Prerequisite> _prerequisites = new List<Prerequisite>();
-        private List<IState> _states;
         private readonly List<Rule> _rules = new List<Rule>();
         private List<IState> _currentStates;
+        private List<IState> _newStates; 
 
         public Machine(IStateFactory stateFactory, IStatePersister persister)
         {
@@ -37,8 +37,6 @@ namespace StateMachine
 
         public void Initialize()
         {
-            _states = _stateFactory.GetStates();
-
             foreach (var state in _stateFactory.GetStates())
             {
                 ConfigureTransitions(state);    
@@ -90,21 +88,37 @@ namespace StateMachine
             if(!destinationTypes.Any())
                return;
 
-            _currentStates.Clear();
+            _newStates = new List<IState>();
             foreach (var destinationType in destinationTypes)
             {
                 var state = _stateFactory.GetState(destinationType);
-                _currentStates.Add(state);
+                _newStates.Add(state);
             }
         }
 
         public void Process(IData data)
         {
+            _newStates = null;
             _currentStates = _persister.Get(data.Id);
+            if (_currentStates == null || !_currentStates.Any())
+            {
+                _currentStates = new List<IState>();
+                var sourceTypes = _rules.First().GetSourceTypes();
+                foreach (var sourceType in sourceTypes)
+                {
+                    var state = _stateFactory.GetState(sourceType);
+                    _currentStates.Add(state);
+                }
+            }
 
             foreach (var currentState in _currentStates)
             {
                 currentState.Execute(data);
+            }
+
+            if (_newStates != null && _newStates.Any())
+            {
+                _currentStates = _newStates;
             }
             
             _persister.Set(data.Id, _currentStates);
