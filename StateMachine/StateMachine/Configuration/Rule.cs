@@ -39,6 +39,11 @@ namespace StateMachine.Configuration
         {
             return _ruleElements.FirstOrDefault(x => x.SourceType == sourceType);
         }
+
+        public List<Type> GetSourceTypes()
+        {
+            return RuleElements.Select(x => x.SourceType).Distinct().ToList();
+        }
     }
 
     public class RuleElement

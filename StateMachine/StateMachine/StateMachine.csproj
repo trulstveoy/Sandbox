@@ -41,8 +41,11 @@
   <ItemGroup>
     <Compile Include="Configuration\Rule.cs" />
     <Compile Include="Event.cs" />
+    <Compile Include="IStateFactory.cs" />
+    <Compile Include="IStatePersister.cs" />
     <Compile Include="Machine.cs" />
     <Compile Include="Configuration\Prerequisite.cs" />
+    <Compile Include="Processing\IData.cs" />
     <Compile Include="State.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

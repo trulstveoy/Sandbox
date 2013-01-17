@@ -1,12 +1,13 @@
 ﻿using System;
+using StateMachine.Processing;
 
 namespace StateMachine.Tests.Samples
 {
-    public class StateB : State
+    public class StateB : IState
     {
         public Action Reached15 { get; set; }
 
-        public override void Execute()
+        public void Execute(IData data)
         {
             if (App.Worker.Value >= 15)
             {

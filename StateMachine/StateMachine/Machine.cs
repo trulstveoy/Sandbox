@@ -1,17 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using StateMachine.Configuration;
+using StateMachine.Processing;
 
 namespace StateMachine
 {
     public class Machine
     {
+        private readonly IStateFactory _stateFactory;
+        private readonly IStatePersister _persister;
         private readonly List<Prerequisite> _prerequisites = new List<Prerequisite>();
-        private readonly List<State> _states = new List<State>();
-        private readonly List<Rule> _rules = new List<Rule>(); 
+        private List<IState> _states;
+        private readonly List<Rule> _rules = new List<Rule>();
+        private List<IState> _currentStates;
+
+        public Machine(IStateFactory stateFactory, IStatePersister persister)
+        {
+            _stateFactory = stateFactory;
+            _persister = persister;
+        }
 
         public void Configure(Action<Prerequisite> action)
         {
@@ -26,23 +35,35 @@ namespace StateMachine
             return string.Join(" | ", _prerequisites.Select(x => x.GetDescription()));
         }
 
-        public void Initialize(State[] states)
+        public void Initialize()
         {
-            _states.AddRange(states);
+            _states = _stateFactory.GetStates();
 
-            var state = _states.First();
+            foreach (var state in _stateFactory.GetStates())
+            {
+                ConfigureTransitions(state);    
+            }
+        }
 
-            RuleElement ruleElement = _rules.Select(x => x.GetRuleElement(state.GetType())).First(x => x != null);
+        private void ConfigureTransitions(IState state)
+        {
+            Rule rule = _rules.FirstOrDefault(r => r.RuleElements.Any(x => x.SourceType == state.GetType()));
+            if(rule == null)
+                return;
+            
+            RuleElement ruleElement = _rules.Select(x => x.GetRuleElement(state.GetType())).FirstOrDefault(x => x != null);
+            if (ruleElement == null)
+                return;
 
             var stateNames = new List<string>();
             foreach (var sourceEvent in ruleElement.SourceEvents)
             {
-                var propertyInfo = (PropertyInfo)sourceEvent;
+                var propertyInfo = (PropertyInfo) sourceEvent;
                 var action = new Action(() =>
                                             {
                                                 if (StateReached(propertyInfo.Name, stateNames))
                                                 {
-                                                    AdvanceState();
+                                                    AdvanceState(rule.DestinationTypes);
                                                 }
                                             });
                 propertyInfo.SetValue(state, action);
@@ -64,15 +85,29 @@ namespace StateMachine
             return false;
         }
 
-        private void AdvanceState()
+        private void AdvanceState(List<Type> destinationTypes)
         {
-           
+            if(!destinationTypes.Any())
+               return;
+
+            _currentStates.Clear();
+            foreach (var destinationType in destinationTypes)
+            {
+                var state = _stateFactory.GetState(destinationType);
+                _currentStates.Add(state);
+            }
         }
 
-        public void Process()
+        public void Process(IData data)
         {
-            var state = _states.First();
-            state.Execute();
+            _currentStates = _persister.Get(data.Id);
+
+            foreach (var currentState in _currentStates)
+            {
+                currentState.Execute(data);
+            }
+            
+            _persister.Set(data.Id, _currentStates);
         }
     }
 }

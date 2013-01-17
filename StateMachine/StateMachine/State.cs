@@ -1,7 +1,9 @@
-﻿namespace StateMachine
+﻿using StateMachine.Processing;
+
+namespace StateMachine
 {
-    public abstract class State
+    public interface IState 
     {
-        public virtual void Execute() { }
+        void Execute(IData data);
     }
 }

@@ -51,8 +51,11 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ConfigurationTest.cs" />
+    <Compile Include="Fakes\StateFactory.cs" />
+    <Compile Include="Fakes\StatePersister.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Samples\App.cs" />
+    <Compile Include="Samples\FooData.cs" />
     <Compile Include="Samples\StateA.cs" />
     <Compile Include="Samples\StateB.cs" />
     <Compile Include="Samples\StateC.cs" />
