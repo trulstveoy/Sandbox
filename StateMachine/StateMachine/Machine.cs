@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using StateMachine.Configuration;
@@ -13,7 +14,6 @@ namespace StateMachine
         private readonly IStatePersister _persister;
         private readonly List<Prerequisite> _prerequisites = new List<Prerequisite>();
         private readonly List<Rule> _rules = new List<Rule>();
-        private List<IState> _currentStates;
         private List<IState> _newStates; 
 
         public Machine(IStateFactory stateFactory, IStatePersister persister)
@@ -56,16 +56,18 @@ namespace StateMachine
             var stateNames = new List<string>();
             foreach (var sourceEvent in ruleElement.SourceEvents)
             {
-                var propertyInfo = (PropertyInfo) sourceEvent;
-                var action = new Action(() =>
-                                            {
-                                                if (StateReached(propertyInfo.Name, stateNames))
-                                                {
-                                                    AdvanceState(rule.DestinationTypes);
-                                                }
-                                            });
-                propertyInfo.SetValue(state, action);
-                stateNames.Add(propertyInfo.Name);
+                var fieldInfo = (FieldInfo) sourceEvent;
+
+
+                //var action = new Action(() =>
+                //                            {
+                //                                if (StateReached(propertyInfo.Name, stateNames))
+                //                                {
+                //                                    AdvanceState(rule.DestinationTypes);
+                //                                }
+                //                            });
+                //propertyInfo.SetValue(state, action);
+                //stateNames.Add(propertyInfo.Name);
             }
         }
 
@@ -98,30 +100,43 @@ namespace StateMachine
 
         public void Process(IData data)
         {
-            _newStates = null;
-            _currentStates = _persister.Get(data.Id);
-            if (_currentStates == null || !_currentStates.Any())
+            var currentStates = GetPersistedOrInitial(data);
+
+            foreach (var currentStateTemp in currentStates)
             {
-                _currentStates = new List<IState>();
-                var sourceTypes = _rules.First().GetSourceTypes();
-                foreach (var sourceType in sourceTypes)
+                var currentState = currentStateTemp;
+
+                currentState.Execute(data);
+
+                RuleElement ruleElement = _rules.Select(x => x.GetRuleElement(currentState.GetType())).FirstOrDefault(x => x != null);
+                if (ruleElement == null)
+                    Debug.Fail("Should always have an event or machine will never stop processing");
+
+                bool allSet = (from FieldInfo fieldInfo in ruleElement.SourceEvents select (Event) fieldInfo.GetValue(currentState)).All(@event => @event.IsSet);
+                if (allSet)
                 {
-                    var state = _stateFactory.GetState(sourceType);
-                    _currentStates.Add(state);
+                    Rule rule = _rules.FirstOrDefault(r => r.RuleElements.Any(x => x.SourceType == currentState.GetType()));
+                    var newStates = _stateFactory.GetStates().Where(x => rule.DestinationTypes.Any(dest => dest == x.GetType()));
+                    currentStates = newStates.ToList();
                 }
             }
-
-            foreach (var currentState in _currentStates)
-            {
-                currentState.Execute(data);
-            }
-
-            if (_newStates != null && _newStates.Any())
-            {
-                _currentStates = _newStates;
-            }
             
-            _persister.Set(data.Id, _currentStates);
+            _persister.Set(data.Id, currentStates);
+        }
+
+        private List<IState> GetPersistedOrInitial(IData data)
+        {
+            var persistedStates = _persister.Get(data.Id);
+            var currentStates = new List<IState>();
+            if(persistedStates != null)
+                currentStates.AddRange(persistedStates);
+            if (!currentStates.Any())
+            {
+                var sourceTypes = _rules.First().GetSourceTypes();
+                currentStates.AddRange(sourceTypes.Select(sourceType => _stateFactory.GetState(sourceType)));
+            }
+
+            return currentStates;
         }
     }
 }

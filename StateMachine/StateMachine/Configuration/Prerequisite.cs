@@ -17,14 +17,15 @@ namespace StateMachine.Configuration
 
         public string GetDescription()
         {
-            var elements = _rule.RuleElements.Select(ruleElement => string.Format("{0}: {1}", ruleElement.SourceType.Name, string.Join(", ", ruleElement.SourceEvents.Select(x => x.Name)))).ToList();
+            var elements = _rule.RuleElements.Select(ruleElement => string.Format("{0}: {1}", ruleElement.SourceType.Name, 
+                string.Join(", ", ruleElement.SourceEvents.Select(x => x.Name)))).ToList();
 
             var destinationTypeNames = string.Join(", ", _rule.DestinationTypes.Select(x => x.Name));
 
             return string.Format("{0} -> {1}", string.Join(", ", elements), destinationTypeNames);
         }
 
-        public Prerequisite Setup<T>(Expression<Func<T, Action>> expression)
+        public Prerequisite Setup<T>(Expression<Func<T, Event>> expression)
         {
             var memberExpression = (MemberExpression) expression.Body;
             MemberInfo member = memberExpression.Member;
