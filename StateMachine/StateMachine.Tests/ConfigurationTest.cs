@@ -34,8 +34,6 @@ namespace StateMachine.Tests
                     .TransitionTo<StateD>());
 
             string descriptions = machine.GetDescriptions();
-            
-            machine.Initialize();
 
             var fooData = new FooData();
             fooData.Id = Guid.NewGuid();
