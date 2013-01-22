@@ -26,7 +26,13 @@ namespace StateMachine
             var prerequisite = new Prerequisite();
             action(prerequisite);
             _prerequisites.Add(prerequisite);
-            _rules.Add(prerequisite.Rule);
+
+           _rules.Add(prerequisite.Rule);
+        }
+
+        public void Initialize()
+        {
+            
         }
 
         public string GetDescriptions()
@@ -38,6 +44,7 @@ namespace StateMachine
         {
             var currentStates = GetPersistedOrInitial(data);
 
+            bool allSet = true;
             foreach (var currentStateTemp in currentStates)
             {
                 var currentState = currentStateTemp;
@@ -48,13 +55,18 @@ namespace StateMachine
                 if (ruleElement == null)
                     Debug.Fail("Should always have an event or machine will never stop processing");
 
-                bool allSet = (from FieldInfo fieldInfo in ruleElement.SourceEvents select (Event) fieldInfo.GetValue(currentState)).All(@event => @event.IsSet);
-                if (allSet)
+                bool currentSet = (from FieldInfo fieldInfo in ruleElement.SourceEvents select (Event) fieldInfo.GetValue(currentState)).All(@event => @event.IsSet);
+                if (!currentSet)
                 {
-                    Rule rule = _rules.FirstOrDefault(r => r.RuleElements.Any(x => x.SourceType == currentState.GetType()));
-                    var newStates = _stateFactory.GetStates().Where(x => rule.DestinationTypes.Any(dest => dest == x.GetType()));
-                    currentStates = newStates.ToList();
+                    allSet = false;
                 }
+            }
+
+            if (allSet)
+            {
+                Rule rule = _rules.FirstOrDefault(r => r.RuleElements.Any(x => x.SourceType == currentStates.First().GetType()));
+                var newStates = _stateFactory.GetStates().Where(x => rule.DestinationTypes.Any(dest => dest == x.GetType()));
+                currentStates = newStates.ToList(); 
             }
             
             _persister.Set(data.Id, currentStates);

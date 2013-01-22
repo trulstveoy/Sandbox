@@ -1,32 +1,23 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using StateMachine.Tests.Fakes;
-using StateMachine.Tests.Samples;
+using Runner.Fakes;
+using Runner.Samples;
+using StateMachine;
 
-namespace StateMachine.Tests
+namespace Runner
 {
-    [TestClass]
-    public class ConfigurationTest
+    class Program
     {
-        private IStateFactory _stateFactory;
-        private IStatePersister _persister;
-
-        [TestInitialize]
-        public void Setup()
+        static void Main(string[] args)
         {
-            _stateFactory = new StateFactory();
-            _persister = new StatePersister();
-        }
+            var stateFactory = new StateFactory();
+            var statePersister = new StatePersister();
 
-        [TestMethod]
-        public void DoIt()
-        {
-            var machine = new Machine(_stateFactory, _persister);
+            var machine = new Machine(stateFactory, statePersister);
 
             machine.Configure(p => p
                  .Setup<StateA>(x => x.Reached5)
                  .Setup<StateA>(x => x.Reaced10)
-                     .TransitionTo<StateB>()          
+                     .TransitionTo<StateB>()
                      .TransitionTo<StateC>());
 
             machine.Configure(p => p
@@ -37,6 +28,7 @@ namespace StateMachine.Tests
             machine.Initialize();
 
             string descriptions = machine.GetDescriptions();
+            Console.WriteLine(descriptions);
 
             var fooData = new FooData();
             fooData.Id = Guid.NewGuid();
@@ -44,7 +36,7 @@ namespace StateMachine.Tests
             for (int i = 0; i < 50; i++)
             {
                 machine.Process(fooData);
-                App.Worker.Increase();
+                fooData.Counter++;
             }
         }
     }

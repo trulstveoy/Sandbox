@@ -25,12 +25,18 @@ namespace StateMachine.Configuration
             return string.Format("{0} -> {1}", string.Join(", ", elements), destinationTypeNames);
         }
 
+        public Type Source { get; private set; }
+        public MemberInfo Member { get; private set; }
+        public Type Destination { get; private set; }
+
         public Prerequisite Setup<T>(Expression<Func<T, Event>> expression)
         {
             var memberExpression = (MemberExpression) expression.Body;
             MemberInfo member = memberExpression.Member;
 
             _rule.AddSource(typeof(T), member);
+            Source = typeof (T);
+            Member = member;
 
             return this;
         }
@@ -38,6 +44,7 @@ namespace StateMachine.Configuration
         public Prerequisite TransitionTo<T2>()
         {
             _rule.DestinationTypes.Add(typeof(T2));
+            Destination = typeof (T2);
 
             return this;
         }

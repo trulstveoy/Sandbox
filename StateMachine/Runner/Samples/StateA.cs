@@ -1,8 +1,8 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using StateMachine;
 using StateMachine.Processing;
 
-namespace StateMachine.Tests.Samples
+namespace Runner.Samples
 {
     public class StateA : IState
     {
@@ -11,15 +11,17 @@ namespace StateMachine.Tests.Samples
 
         public void Execute(IData data)
         {
-            if (App.Worker.Value >= 5)
+            var fooData = (FooData) data;
+
+            if (fooData.Counter >= 5)
             {
-                Debug.WriteLine("Reached5");
+                Debug.WriteLine("StateA: Reached5");
                 Reached5.Set();
             }
 
-            if (App.Worker.Value >= 10)
+            if (fooData.Counter >= 10)
             {
-                Debug.WriteLine("Reached10");
+                Debug.WriteLine("StateA: Reached10");
                 Reaced10.Set();
             }
         }
