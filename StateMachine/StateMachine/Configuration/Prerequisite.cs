@@ -28,8 +28,9 @@ namespace StateMachine.Configuration
         public Type Source { get; private set; }
         public MemberInfo Member { get; private set; }
         public Type Destination { get; private set; }
+        public Type InitialState { get; private set; }
 
-        public Prerequisite Setup<T>(Expression<Func<T, Event>> expression)
+        public Prerequisite Setup<T>(Expression<Func<T, Event>> expression) where T : IState 
         {
             var memberExpression = (MemberExpression) expression.Body;
             MemberInfo member = memberExpression.Member;
@@ -41,14 +42,18 @@ namespace StateMachine.Configuration
             return this;
         }
 
-        public Prerequisite TransitionTo<T2>()
+        public Prerequisite TransitionTo<T>()
         {
-            _rule.DestinationTypes.Add(typeof(T2));
-            Destination = typeof (T2);
+            _rule.DestinationTypes.Add(typeof(T));
+            Destination = typeof (T);
 
             return this;
         }
 
 
+        public void SetInitialState<T>()
+        {
+            InitialState = typeof (T);
+        }
     }
 }

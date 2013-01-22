@@ -14,6 +14,9 @@ namespace Runner
 
             var machine = new Machine(stateFactory, statePersister);
 
+            machine.Configure(p =>
+                p.SetInitialState<StateA>());
+
             machine.Configure(p => p
                  .Setup<StateA>(x => x.Reached5)
                  .Setup<StateA>(x => x.Reaced10)

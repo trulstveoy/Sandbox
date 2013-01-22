@@ -80,8 +80,8 @@ namespace StateMachine
                 currentStates.AddRange(persistedStates);
             if (!currentStates.Any())
             {
-                var sourceTypes = _rules.First().GetSourceTypes();
-                currentStates.AddRange(sourceTypes.Select(sourceType => _stateFactory.GetState(sourceType)));
+                List<Type> firstStateTypes = _prerequisites.Where(x => x.InitialState != null).Select(source => source.InitialState).ToList();
+                currentStates.AddRange(firstStateTypes.Select(firstStateType => _stateFactory.GetState(firstStateType)));
             }
 
             return currentStates;
