@@ -51,7 +51,7 @@
             </div>
         </div>
     </div>
-    
+
     <script src="../../Scripts/lib/jquery-1.9.0.js"></script>
     <script src="../../Scripts/lib/bootstrap-transition.js"></script>
     <script src="../../Scripts/lib/bootstrap-alert.js"></script>
@@ -67,13 +67,27 @@
     <script src="../../Scripts/lib/bootstrap-typeahead.js"></script>
     <script src="../../Scripts/lib/knockout-2.2.1.js"></script>
     <script src="../../Scripts/lib/require.js"></script>
-    
+
     <script type="text/javascript">
         function ViewModel() {
-            debugger;
             var self = this;
-            self.input = ko.observable();
+            self.command = ko.observable();
+            self.command.subscribe(commandChanged);
             self.output = ko.observable();
+
+            function commandChanged() {
+                $.ajax({
+                    type: "Get",
+                    url: "/Api/Game/GetNextMessage", 
+                    data: { 'command': self.command() },
+                    cache: false,
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        self.output(data);
+                    }
+                });
+            }
 
             $.ajax({
                 type: "Get",

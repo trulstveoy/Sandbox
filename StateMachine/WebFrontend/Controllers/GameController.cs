@@ -7,6 +7,12 @@ namespace WebFrontend.Controllers
         public string GetInitialMessage()
         {
             return "hello world";
+        
+        }
+
+        public string GetNextMessage(string command)
+        {
+            return command;
         }
     }
 }
