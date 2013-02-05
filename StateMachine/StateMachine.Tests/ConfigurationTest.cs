@@ -34,8 +34,6 @@ namespace StateMachine.Tests
                 .Setup<StateC>(x => x.Reached20)
                     .TransitionTo<StateD>());
 
-            machine.Initialize();
-
             string descriptions = machine.GetDescriptions();
 
             var fooData = new FooData();

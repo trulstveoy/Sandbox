@@ -28,8 +28,6 @@ namespace Runner
                 .Setup<StateC>(x => x.Reached20)
                     .TransitionTo<StateD>());
 
-            machine.Initialize();
-
             string descriptions = machine.GetDescriptions();
             Console.WriteLine(descriptions);
 

@@ -30,11 +30,6 @@ namespace StateMachine
            _rules.Add(prerequisite.Rule);
         }
 
-        public void Initialize()
-        {
-            
-        }
-
         public string GetDescriptions()
         {
             return string.Join(" | ", _prerequisites.Select(x => x.GetDescription()));
