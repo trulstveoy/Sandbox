@@ -5,7 +5,7 @@ namespace StateMachine
 {
     public interface IStateFactory
     {
-        IState GetState(Type type);
-        List<IState> GetStates();
+        State GetState(Type type);
+        List<State> GetStates();
     }
 }

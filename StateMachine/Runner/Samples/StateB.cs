@@ -4,11 +4,11 @@ using StateMachine.Processing;
 
 namespace Runner.Samples
 {
-    public class StateB : IState
+    public class StateB : State
     {
         public Event Reached15 = new Event();
 
-        public void Execute(IData data)
+        public override void Execute(IData data)
         {
             var fooData = (FooData) data;
 

@@ -4,11 +4,11 @@ using StateMachine.Processing;
 
 namespace StateMachine.Tests.Samples
 {
-    public class StateB : IState
+    public class StateB : State
     {
         public Event Reached15 = new Event();
 
-        public void Execute(IData data)
+        public override void Execute(IData data)
         {
             if (App.Worker.Value >= 15)
             {

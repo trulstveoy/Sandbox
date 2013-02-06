@@ -1,19 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using Newtonsoft.Json;
+using System.Runtime.Serialization.Formatters.Binary;
 using StateMachine;
 
 namespace Game
 {
     public class StatePersister : IStatePersister
     {
-        public List<IState> Get(Guid id)
+        public List<State> Get(Guid id)
         {
             try
             {
-                var doc = File.ReadAllText(string.Format("{0}.json", id));
-                var states = (List<IState>)JsonConvert.DeserializeObject(doc);
+                var stream = File.Open(string.Format("{0}.bin", id), FileMode.Open);
+                var formatter = new BinaryFormatter();
+                var states = (List<State>)formatter.Deserialize(stream);
+                stream.Close();
                 return states;
             }
             catch (FileNotFoundException e)
@@ -22,10 +24,12 @@ namespace Game
             }
         }
 
-        public void Set(Guid id, List<IState> states)
+        public void Set(Guid id, List<State> states)
         {
-            string document = JsonConvert.SerializeObject(states);
-            File.WriteAllText(string.Format("{0}.json", id), document);
+            var stream = File.Open(string.Format("{0}.bin", id), FileMode.Create);
+            var formatter = new BinaryFormatter();
+            formatter.Serialize(stream, states);
+            stream.Close();
         }
     }
 }

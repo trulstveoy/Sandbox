@@ -8,18 +8,18 @@ namespace Game
 {
     public class StateFactory : IStateFactory
     {
-        private readonly List<IState> _states = new List<IState>
+        private readonly List<State> _states = new List<State>
                                            {
                                                new EndOfRoadState(),
                                                new ForestState()
                                            } ; 
 
-        public IState GetState(Type type)
+        public State GetState(Type type)
         {
             return _states.FirstOrDefault(x => x.GetType() == type);
         }
 
-        public List<IState> GetStates()
+        public List<State> GetStates()
         {
             return _states;
         }

@@ -8,7 +8,7 @@ namespace StateMachine.Tests.Fakes
 {
     public class StateFactory : IStateFactory
     {
-        private readonly Dictionary<Type, IState> _states = new Dictionary<Type, IState>();
+        private readonly Dictionary<Type, State> _states = new Dictionary<Type, State>();
 
         public StateFactory()
         {
@@ -18,12 +18,12 @@ namespace StateMachine.Tests.Fakes
             _states.Add(typeof(StateD), new StateD());
         }
 
-        public IState GetState(Type type)
+        public State GetState(Type type)
         {
             return _states[type];
         }
 
-        public List<IState> GetStates()
+        public List<State> GetStates()
         {
             return _states.Values.ToList();
         }

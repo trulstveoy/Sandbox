@@ -3,9 +3,9 @@ using StateMachine.Processing;
 
 namespace StateMachine.Tests.Samples
 {
-    public class StateD : IState
+    public class StateD : State
     {
-        public void Execute(IData data)
+        public override void Execute(IData data)
         {
             Debug.WriteLine("StateD");
         }

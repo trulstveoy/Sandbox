@@ -35,7 +35,7 @@ namespace StateMachine
             return string.Join(" | ", _prerequisites.Select(x => x.GetDescription()));
         }
 
-        public void Process(IData data)
+        public List<State> Process(IData data)
         {
             var currentStates = GetPersistedOrInitial(data);
 
@@ -65,12 +65,14 @@ namespace StateMachine
             }
             
             _persister.Set(data.Id, currentStates);
+
+            return currentStates;
         }
 
-        private List<IState> GetPersistedOrInitial(IData data)
+        private List<State> GetPersistedOrInitial(IData data)
         {
             var persistedStates = _persister.Get(data.Id);
-            var currentStates = new List<IState>();
+            var currentStates = new List<State>();
             if(persistedStates != null)
                 currentStates.AddRange(persistedStates);
             if (!currentStates.Any())

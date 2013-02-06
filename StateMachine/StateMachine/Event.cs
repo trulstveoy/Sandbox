@@ -1,5 +1,8 @@
-﻿namespace StateMachine
+﻿using System;
+
+namespace StateMachine
 {
+    [Serializable]
     public class Event
     {
         public bool IsSet { get; set; }

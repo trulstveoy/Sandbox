@@ -4,9 +4,9 @@ using StateMachine.Processing;
 
 namespace Runner.Samples
 {
-    public class StateD : IState
+    public class StateD : State
     {
-        public void Execute(IData data)
+        public override void Execute(IData data)
         {
             var fooData = (FooData) data;
 

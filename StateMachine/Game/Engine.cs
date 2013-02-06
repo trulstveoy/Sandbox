@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Game.States;
 using StateMachine;
 
@@ -8,8 +9,8 @@ namespace Game
     {
         private readonly IStateFactory _factory = new StateFactory();
         private readonly IStatePersister _persister = new StatePersister();
-        private readonly Machine _machine; 
-        private Guid _id = new Guid();
+        private readonly Machine _machine;
+        private readonly Guid _id = Guid.NewGuid();
 
         public Engine()
         {
@@ -31,18 +32,18 @@ namespace Game
         {
             var command = new Command("") {Id = _id};
 
-            _machine.Process(command);
+            var state = (GameState)_machine.Process(command).First();
 
-            return "first message";
+            return state.Message;
         }
 
         public string ExecuteCommand(string text)
         {
             var command = new Command(text) { Id = _id };
 
-            _machine.Process(command);
+            var state = (GameState)_machine.Process(command).First();
 
-            return "some message";
+            return state.Message;
         }
     }
 }

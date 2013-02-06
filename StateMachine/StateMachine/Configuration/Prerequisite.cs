@@ -30,7 +30,7 @@ namespace StateMachine.Configuration
         public Type Destination { get; private set; }
         public Type InitialState { get; private set; }
 
-        public Prerequisite Setup<T>(Expression<Func<T, Event>> expression) where T : IState 
+        public Prerequisite Setup<T>(Expression<Func<T, Event>> expression) where T : State 
         {
             var memberExpression = (MemberExpression) expression.Body;
             MemberInfo member = memberExpression.Member;

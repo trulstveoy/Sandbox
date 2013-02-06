@@ -5,15 +5,15 @@ namespace StateMachine.Tests.Fakes
 {
     public class StatePersister : IStatePersister
     {
-        private readonly Dictionary<Guid, List<IState>> _states = new Dictionary<Guid, List<IState>>();
+        private readonly Dictionary<Guid, List<State>> _states = new Dictionary<Guid, List<State>>();
 
-        public List<IState> Get(Guid id)
+        public List<State> Get(Guid id)
         {
-            List<IState> states;
+            List<State> states;
             return _states.TryGetValue(id, out states) ? states : null;
         }
 
-        public void Set(Guid id, List<IState> states)
+        public void Set(Guid id, List<State> states)
         {
             if (_states.ContainsKey(id))
             {

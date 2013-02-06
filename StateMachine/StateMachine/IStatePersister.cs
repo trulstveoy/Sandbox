@@ -5,7 +5,7 @@ namespace StateMachine
 {
     public interface IStatePersister
     {
-        List<IState> Get(Guid id);
-        void Set(Guid id, List<IState> states);
+        List<State> Get(Guid id);
+        void Set(Guid id, List<State> states);
     }
 }
