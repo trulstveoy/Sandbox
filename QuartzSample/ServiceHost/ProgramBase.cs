@@ -1,9 +1,10 @@
-﻿using StructureMap;
+﻿using Quartz;
+using StructureMap;
 using Topshelf;
 
 namespace ServiceHost
 {
-    public abstract class ProgramBase<T>  where T : IService
+    public abstract class ProgramBase<T>  where T : IJob
     {
         protected void Run()
         {
@@ -11,9 +12,9 @@ namespace ServiceHost
 
             HostFactory.Run(configurator =>
             {
-                configurator.Service<IService>(service =>
+                configurator.Service<Service<T>>(service =>
                 {
-                    service.ConstructUsing(s => ObjectFactory.GetInstance<T>());
+                    service.ConstructUsing(s => new Service<T>());
                     service.WhenStarted(s => s.Start());
                     service.WhenStopped(s => s.Stop());
                 });
@@ -26,5 +27,6 @@ namespace ServiceHost
         }
 
         protected abstract void Bootstrap(IInitializationExpression init);
+
     }
 }

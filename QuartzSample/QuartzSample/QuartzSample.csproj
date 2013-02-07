@@ -57,8 +57,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FooJob.cs" />
-    <Compile Include="FooService.cs" />
-    <Compile Include="FooTask.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

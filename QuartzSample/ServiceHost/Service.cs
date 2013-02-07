@@ -1,29 +1,30 @@
 ﻿using Quartz;
 using Quartz.Impl;
 
-namespace QuartzSample
+namespace ServiceHost
 {
-    public class FooTask
+    public class Service<T> where T : IJob
     {
         private readonly IScheduler _scheduler;
 
-        public FooTask()
+        public Service()
         {
             ISchedulerFactory schedulerFactory = new StdSchedulerFactory();
             _scheduler = schedulerFactory.GetScheduler();
+            _scheduler.JobFactory = new JobFactory();
 
-            var fooDetail = JobBuilder
-                .Create<FooJob>()
-                .WithIdentity("fooJob1", "group1")
+            var jobBuilder = JobBuilder
+                .Create<T>()
+                .WithIdentity("thejob")
                 .Build();
 
-            var fooTrigger = TriggerBuilder
+            var trigger = TriggerBuilder
                 .Create()
-                .WithIdentity("fooTrigger1", "group1")
+                .WithIdentity("thetrigger")
                 .WithDailyTimeIntervalSchedule(x => x.WithIntervalInSeconds(5))
                 .Build();
 
-            _scheduler.ScheduleJob(fooDetail, fooTrigger);
+            _scheduler.ScheduleJob(jobBuilder, trigger);
         }
 
         public void Start()

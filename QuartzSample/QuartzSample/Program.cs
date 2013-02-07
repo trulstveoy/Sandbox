@@ -1,10 +1,11 @@
 ﻿using System;
+using Quartz;
 using ServiceHost;
 using StructureMap;
 
 namespace QuartzSample
 {
-    public class Program : ProgramBase<IFooService>
+    public class Program : ProgramBase<FooJob>
     {
         //Service hosting + graceful shutdown / quartz / logging
 
@@ -17,7 +18,7 @@ namespace QuartzSample
 
         protected override void Bootstrap(IInitializationExpression init)
         {
-            init.For<IFooService>().Use<FooService>();
+            init.For<IJob>().Use<FooJob>();
         }
     }
 }
