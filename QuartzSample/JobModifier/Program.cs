@@ -115,7 +115,6 @@ namespace JobModifier
             Console.WriteLine("Running once....");
 
             var scheduler = schedulerFactory.GetScheduler();
-            scheduler.UnscheduleJob(new TriggerKey(TriggerName));
 
             var trigger = TriggerBuilder
                     .Create()
