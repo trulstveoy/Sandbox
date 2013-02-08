@@ -1,20 +1,22 @@
 ﻿using System.Collections.Specialized;
 using Quartz;
-using Quartz.Collection;
 using Quartz.Impl;
 
 namespace ServiceHost
 {
     public class Service<T> where T : IJob
     {
-        private const string JobName = "thejob";
+        private readonly string _instanceName;
+        private readonly string _scheduleExpression;
+        private readonly IScheduler _scheduler;
 
-        private IScheduler _scheduler;
-
-        public Service(string scheduleExpression)
+        public Service(string instanceName, string scheduleExpression)
         {
+            _instanceName = instanceName;
+            _scheduleExpression = scheduleExpression;
+
             var properties = new NameValueCollection();
-            properties.Add("quartz.scheduler.instanceName", "QuartzServer");
+            properties.Add("quartz.scheduler.instanceName", instanceName);
             properties.Add("quartz.scheduler.idleWaitTime", "3000");
 
             properties.Add("quartz.jobStore.type", "Quartz.Impl.AdoJobStore.JobStoreTX, Quartz");
@@ -31,31 +33,33 @@ namespace ServiceHost
             _scheduler = schedulerFactory.GetScheduler();
             _scheduler.JobFactory = new JobFactory();
 
-
             ConfigureJob();
-            //ConfigureTrigger(scheduleExpression);
+            ConfigureTrigger();
         }
 
-        private void ConfigureTrigger(string scheduleExpression)
+        private void ConfigureTrigger()
         {
-            var trigger = TriggerBuilder
+            if (_scheduler.GetTrigger(new TriggerKey(_instanceName + "_trigger")) == null)
+            {
+                var trigger = TriggerBuilder
                     .Create()
-                    .WithIdentity("thetrigger")
-                    .ForJob(new JobKey("thejob"))
-                    .WithCronSchedule(scheduleExpression)
+                    .WithIdentity(_instanceName + "_trigger")
+                    .ForJob(new JobKey(_instanceName + "_job"))
+                    .WithCronSchedule(_scheduleExpression)
                     .Build();
-            _scheduler.ScheduleJob(trigger);
+                _scheduler.ScheduleJob(trigger);
+            }
         }
 
         private void ConfigureJob()
         {
-            IJobDetail jobDetail = _scheduler.GetJobDetail(new JobKey(JobName));
+            IJobDetail jobDetail = _scheduler.GetJobDetail(new JobKey(_instanceName + "_job"));
             if (jobDetail == null)
             {
                 jobDetail = JobBuilder
                     .Create<T>()
                     .StoreDurably(true)
-                    .WithIdentity("thejob")
+                    .WithIdentity(_instanceName + "_job")
                     .Build();
 
                 _scheduler.AddJob(jobDetail, true);

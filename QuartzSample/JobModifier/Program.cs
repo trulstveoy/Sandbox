@@ -12,13 +12,14 @@ namespace JobModifier
         private const string Every5Seconds = "0/5 * * 1/1 * ? *";
 
         private const string RunOnceTriggerName = "runoncetrigger";
-        private const string TriggerName = "thetrigger";
-        private const string JobName = "thejob";
+        private const string InstanceName = "QuartzSample";
+        private const string TriggerName = "QuartzSample_trigger";
+        private const string JobName = "QuartzSample_job";
 
         static void Main()
         {
             var properties = new NameValueCollection();
-            properties.Add("quartz.scheduler.instanceName", "QuartzServer");
+            properties.Add("quartz.scheduler.instanceName", InstanceName);
             properties.Add("quartz.jobStore.type", "Quartz.Impl.AdoJobStore.JobStoreTX, Quartz");
             properties.Add("quartz.jobStore.dataSource", "default");
             properties.Add("quartz.jobStore.tablePrefix", "QRTZ_");

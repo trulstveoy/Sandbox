@@ -6,6 +6,10 @@ namespace ServiceHost
 {
     public abstract class ProgramBase<T>  where T : IJob
     {
+        protected abstract void Bootstrap(IInitializationExpression init);
+        protected abstract string ScheduleExpression { get; }
+        protected abstract string InstanceName { get; }
+
         protected void Run()
         {
             ObjectFactory.Initialize(Bootstrap);
@@ -14,7 +18,7 @@ namespace ServiceHost
             {
                 configurator.Service<Service<T>>(service =>
                 {
-                    service.ConstructUsing(s => new Service<T>(ScheduleExpression()));
+                    service.ConstructUsing(s => new Service<T>(InstanceName, ScheduleExpression));
                     service.WhenStarted(s => s.Start());
                     service.WhenStopped(s => s.Stop());
                 });
@@ -25,10 +29,5 @@ namespace ServiceHost
                 configurator.SetServiceName("QuartzNetTopshelfSample");
             });
         }
-
-        protected abstract void Bootstrap(IInitializationExpression init);
-
-        protected abstract string ScheduleExpression();
-
     }
 }
