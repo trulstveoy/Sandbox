@@ -9,6 +9,8 @@ namespace QuartzSample
     {
         //Service hosting + graceful shutdown / quartz / logging
 
+        private const string EveryFiveSeconds = "0/5 * * 1/1 * ? *";
+
         static void Main()
         {
             Console.WriteLine("Quartz.Net/Topshelf/StructureMap/Log4Net sample");
@@ -19,6 +21,11 @@ namespace QuartzSample
         protected override void Bootstrap(IInitializationExpression init)
         {
             init.For<IJob>().Use<FooJob>();
+        }
+
+        protected override string ScheduleExpression()
+        {
+            return EveryFiveSeconds;
         }
     }
 }

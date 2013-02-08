@@ -7,7 +7,9 @@ namespace QuartzSample
     {
         public void Execute(IJobExecutionContext context)
         {
-            Console.WriteLine("FooJob executing.... Time is: {0}", DateTime.Now);
+            var trigger = (ICronTrigger) context.Trigger;
+
+            Console.WriteLine("Job executing with expression: {0}. Time is: {1}", trigger.CronExpressionString, DateTime.Now);
         }
     }
 }

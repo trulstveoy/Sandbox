@@ -7,7 +7,7 @@ namespace ServiceHost
     {
         private readonly IScheduler _scheduler;
 
-        public Service()
+        public Service(string scheduleExpression)
         {
             ISchedulerFactory schedulerFactory = new StdSchedulerFactory();
             _scheduler = schedulerFactory.GetScheduler();
@@ -21,7 +21,7 @@ namespace ServiceHost
             var trigger = TriggerBuilder
                 .Create()
                 .WithIdentity("thetrigger")
-                .WithDailyTimeIntervalSchedule(x => x.WithIntervalInSeconds(5))
+                .WithCronSchedule(scheduleExpression)
                 .Build();
 
             _scheduler.ScheduleJob(jobBuilder, trigger);
