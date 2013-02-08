@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuartzSample", "QuartzSampl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceHost", "ServiceHost\ServiceHost.csproj", "{017E8D29-2342-4B1D-AE1B-91419143AC3A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobModifier", "JobModifier\JobModifier.csproj", "{9BACAFEA-751D-4F3B-AEB2-28BFBF083BE5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{017E8D29-2342-4B1D-AE1B-91419143AC3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{017E8D29-2342-4B1D-AE1B-91419143AC3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{017E8D29-2342-4B1D-AE1B-91419143AC3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BACAFEA-751D-4F3B-AEB2-28BFBF083BE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BACAFEA-751D-4F3B-AEB2-28BFBF083BE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BACAFEA-751D-4F3B-AEB2-28BFBF083BE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BACAFEA-751D-4F3B-AEB2-28BFBF083BE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

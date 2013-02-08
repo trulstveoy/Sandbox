@@ -9,7 +9,7 @@ namespace QuartzSample
     {
         //Service hosting + graceful shutdown / quartz / logging
 
-        private const string EveryFiveSeconds = "0/5 * * 1/1 * ? *";
+        private const string Every10Seconds = "0/10 * * 1/1 * ? *";
 
         static void Main()
         {
@@ -25,7 +25,7 @@ namespace QuartzSample
 
         protected override string ScheduleExpression()
         {
-            return EveryFiveSeconds;
+            return Every10Seconds;
         }
     }
 }
