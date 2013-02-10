@@ -17,13 +17,7 @@
         </DataTemplate>
 
         <DataTemplate x:Key="PushpinTemplate">
-            <bm:Pushpin>
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Tapped">
-                        <cal:ActionMessage MethodName="SayHello" />
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-
+            <bm:Pushpin cal:Message.Attach="[Event Tapped] = [Action PinTapped]">
                 <bm:MapLayer.Position>
                     <bm:Location Latitude="{Binding Latitude}" Longitude="{Binding Longtitude}" />
                 </bm:MapLayer.Position>

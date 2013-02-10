@@ -32,7 +32,7 @@
             set { _longtitude = value; NotifyOfPropertyChange(() => Longtitude); }
         }
 
-        public void SayHello()
+        public void PinTapped()
         {
             
         }
