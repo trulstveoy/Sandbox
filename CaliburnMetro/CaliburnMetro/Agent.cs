@@ -13,13 +13,9 @@ namespace CaliburnMetro
     {
         private const string Url = "http://webkamera.vegvesen.no/metadata";
 
-
-        public List<Camera> GetCameras()
+        public IEnumerable<Camera> GetCameras()
         {
-            var list = new List<Camera>();
-                
             XElement xElement = XElement.Load(Url);
-
 
             var items = xElement.Descendants("webkamera");
             foreach (var element in items)
@@ -27,10 +23,12 @@ namespace CaliburnMetro
                 var camera = new Camera();
                 camera.Id = element.Attribute("id").Value;
                 camera.Url = element.Element("url").Value;
-                list.Add(camera);
-            }
+                camera.Name = element.Element("stedsnavn").Value;
+                camera.Latitude = element.Element("breddegrad").Value;
+                camera.Longtitude = element.Element("lengdegrad").Value;
 
-            return list;
+                yield return camera;
+            }
         }
     }
 }
