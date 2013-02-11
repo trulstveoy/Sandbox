@@ -27,18 +27,18 @@
 
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
         
-            <ListView ItemsSource="{Binding Images}" ItemTemplate="{StaticResource ImageTemplate}"
-            ScrollViewer.HorizontalScrollBarVisibility="Auto"
-            ScrollViewer.VerticalScrollBarVisibility="Disabled"
-            ScrollViewer.HorizontalScrollMode="Enabled"
-            ScrollViewer.VerticalScrollMode="Disabled"
-            SelectionMode="None">
+            <!--<ListView ItemsSource="{Binding Images}" ItemTemplate="{StaticResource ImageTemplate}"
+                    ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                    ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                    ScrollViewer.HorizontalScrollMode="Enabled"
+                    ScrollViewer.VerticalScrollMode="Disabled"
+                    SelectionMode="None">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel Orientation="Horizontal" />
                     </ItemsPanelTemplate>
                 </ListView.ItemsPanel>
-            </ListView>
+            </ListView>-->
 
             <bm:Map Credentials="{StaticResource BingMapsApiKey}" HomeRegion="Norway" MapType="Aerial" ZoomLevel="5.5">
                 <bm:Map.Center>

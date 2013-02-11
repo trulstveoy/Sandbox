@@ -15,7 +15,7 @@ namespace CaliburnMetro.ViewModels
         public MainPageViewModel()
         {
             var agent = new Agent();
-            Images = new BindableCollection<ImageViewModel>(agent.GetCameras().Select(x => new ImageViewModel()
+            Images = new BindableCollection<ImageViewModel>(agent.GetCameras().Take(20).Select(x => new ImageViewModel()
                                                                                                {
                                                                                                    Name = x.Name, 
                                                                                                    Url = x.Url,

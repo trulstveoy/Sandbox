@@ -1,6 +1,10 @@
 ﻿namespace CaliburnMetro.ViewModels
 {
+    using System;
     using Caliburn.Micro;
+    using Views;
+    using Windows.UI.Popups;
+    using Windows.UI.Xaml.Controls.Primitives;
 
     public class ImageViewModel : PropertyChangedBase
     {
@@ -34,7 +38,14 @@
 
         public void PinTapped()
         {
+            var pi = new PopupImage();
+
+            var popup = new Popup();
+            popup.Child = pi;
+            popup.IsOpen = true;
             
+            
+            //new MessageDialog("foo", "bar").ShowAsync();
         }
     }
 }
