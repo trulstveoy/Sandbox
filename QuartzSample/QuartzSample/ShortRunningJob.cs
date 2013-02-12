@@ -1,10 +1,11 @@
 ﻿using System;
+using Interfaces;
 using Quartz;
 
 namespace QuartzSample
 {
     [DisallowConcurrentExecution]
-    public class ShortRunningJob : IJob
+    public class ShortRunningJob : IShortRunningJob
     {
         public void Execute(IJobExecutionContext context)
         {

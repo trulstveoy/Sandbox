@@ -1,11 +1,12 @@
 ﻿using System;
+using Interfaces;
 using Quartz;
 using ServiceHost;
 using StructureMap;
 
 namespace QuartzSample
 {
-    public class Program : ProgramBase<ShortRunningJob>
+    public class Program : ProgramBase<IShortRunningJob>
     {
         //Service hosting + graceful shutdown / quartz / logging
 
@@ -20,7 +21,7 @@ namespace QuartzSample
 
         protected override void Bootstrap(IInitializationExpression init)
         {
-            init.For<IJob>().Use<ShortRunningJob>();
+            init.For<IShortRunningJob>().Use<ShortRunningJob>();
         }
 
         protected override string ScheduleExpression { get { return Every10Seconds; } }

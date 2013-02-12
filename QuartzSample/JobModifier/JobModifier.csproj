@@ -61,9 +61,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\QuartzSample\QuartzSample.csproj">
-      <Project>{71677232-fdd1-42ca-a6c6-bafa7796a488}</Project>
-      <Name>QuartzSample</Name>
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
+      <Project>{ee233694-d081-4510-a165-7d7acac6bd26}</Project>
+      <Name>Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
