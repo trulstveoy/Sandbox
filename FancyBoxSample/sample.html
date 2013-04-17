@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>fancyBox and validation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<script type="text/javascript" src="jquery-1.4.3.min.js"></script>
+	<script type="text/javascript" src="fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+	<script type="text/javascript" src="jquery-validate.js"></script>
+	<link rel="stylesheet" href="fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
+	
+	<script type="text/javascript">
+
+        $(document).ready(function () {						
+			$("#lightbox").fancybox();			
+			
+			$("#boxContent").validate({
+					errorLabelContainer: $("#boxContentValidation"),
+					wrapper: 'p'
+				});
+			
+			$("#saveButton").click(function () {
+			 
+                $("#boxContent").valid();
+            });
+        });       
+  
+    </script>
+</head>
+<body>
+	<h1>fancyBox and validation</h1>		
+	
+	<a id="lightbox" href="#boxContent">Open box<a/>
+	
+	<div style="display: none;">
+			
+		<div id="boxContent">
+			
+			<div id="boxContentValidation" style="display: none">
+			</div>
+			
+			<div>
+				<p>
+					<h5>First name</h5>
+					<input class="width 200 required" id="FirstName" title="First name is invalid" type="text"></input>
+				</p>
+				
+				<p>
+					<h5>Surname</h5>
+					<input class="width 200 required" id="Surname" title="Surname is invalid" type="text"></input>
+				</p>
+				
+				<p>
+					<h5>Phone</h5>
+					<input class="width 200 required digits" id="Phone" title="Phone is invalid" type="text"></input>
+				</p>
+				
+				<p>
+					<h5>Email</h5>
+					<input class="width 200 required email" id="Email" title="Email is invalid" type="text"></input>
+				</p>
+				
+				<input type="submit" value="Save" id="saveButton" />
+			</div>
+		</div>
+	</div>	
+	
+</body>
+</html>
