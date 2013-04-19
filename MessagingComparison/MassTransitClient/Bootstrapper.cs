@@ -7,7 +7,7 @@ namespace MassTransitClient
     {
         public void Initialize(ContainerBuilder builder)
         {
-            builder.RegisterType<MessagePublisher>().As<IPublisher>();
+            builder.RegisterType<SampleCommandSender>().As<ISendCommand>();
         }
     }
 }

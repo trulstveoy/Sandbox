@@ -4,7 +4,7 @@ using NServiceBusMessages;
 
 namespace NServiceBusServer
 {
-    public class SubscriberEndpoint : IAmStartedByMessages<ISampleCommand>
+    public class ServerEndpoint : IAmStartedByMessages<ISampleCommand>
     {
         public void Handle(ISampleCommand command)
         {

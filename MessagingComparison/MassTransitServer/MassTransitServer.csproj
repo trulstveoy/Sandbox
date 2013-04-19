@@ -53,7 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MessageSubscriber.cs" />
+    <Compile Include="SampleCommandHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +61,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MassTransitCommands\MassTransitCommands.csproj">
+      <Project>{9C424C3D-8FF9-485E-80CC-2AFF80822601}</Project>
+      <Name>MassTransitCommands</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MassTransitHost\MassTransitHost.csproj">
       <Project>{4695e92e-9174-47ae-8dfb-9b8887ca0956}</Project>
       <Name>MassTransitHost</Name>

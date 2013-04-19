@@ -36,10 +36,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Autofac">
-      <HintPath>..\packages\Autofac.3.0.2\lib\net40\Autofac.dll</HintPath>
+      <HintPath>..\packages\Autofac.2.6.3.862\lib\NET40\Autofac.dll</HintPath>
     </Reference>
     <Reference Include="Autofac.Configuration">
-      <HintPath>..\packages\Autofac.3.0.2\lib\net40\Autofac.Configuration.dll</HintPath>
+      <HintPath>..\packages\Autofac.2.6.3.862\lib\NET40\Autofac.Configuration.dll</HintPath>
     </Reference>
     <Reference Include="Magnum">
       <HintPath>..\packages\Magnum.2.1.0\lib\NET40\Magnum.dll</HintPath>
@@ -60,7 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
-    <Compile Include="MessagePublisher.cs" />
+    <Compile Include="SampleCommandSender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -72,7 +72,7 @@
       <Project>{4695e92e-9174-47ae-8dfb-9b8887ca0956}</Project>
       <Name>MassTransitHost</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MassTransitMessages\MassTransitCommands.csproj">
+    <ProjectReference Include="..\MassTransitCommands\MassTransitCommands.csproj">
       <Project>{9C424C3D-8FF9-485E-80CC-2AFF80822601}</Project>
       <Name>MassTransitCommands</Name>
     </ProjectReference>

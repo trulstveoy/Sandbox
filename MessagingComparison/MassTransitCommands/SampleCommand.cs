@@ -1,6 +1,6 @@
 ﻿namespace MassTransitCommands
 {
-    public class SampleMessage
+    public class SampleCommand
     {
         public string Text { get; set; }
     }

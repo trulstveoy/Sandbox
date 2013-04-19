@@ -63,7 +63,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IBootstrapper.cs" />
-    <Compile Include="IPublisher.cs" />
+    <Compile Include="IHandleCommand.cs" />
+    <Compile Include="ISendCommand.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

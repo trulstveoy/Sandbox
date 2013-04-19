@@ -5,11 +5,11 @@ using NServiceBusMessages;
 
 namespace NServiceBusClient
 {
-    public class PublisherEndpoint : IWantToRunAtStartup
+    public class ClientEndpoint : IWantToRunAtStartup
     {
         private readonly IBus _bus;
 
-        public PublisherEndpoint(IBus bus)
+        public ClientEndpoint(IBus bus)
         {
             _bus = bus;
         }
