@@ -1,0 +1,5 @@
+﻿IIS config:
+*Anonymous authentication
+
+Folder config:
+* AppPoolUser full control (IIS APPPOOL\WEBBOX)
