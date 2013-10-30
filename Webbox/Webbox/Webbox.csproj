@@ -55,6 +55,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Services" />
     <Reference Include="System.IdentityModel.Tokens.ValidatingIssuerNameRegistry">
       <HintPath>..\packages\System.IdentityModel.Tokens.ValidatingIssuerNameRegistry.4.5.1\lib\net45\System.IdentityModel.Tokens.ValidatingIssuerNameRegistry.dll</HintPath>
     </Reference>
@@ -144,6 +146,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\RelayController.cs" />
     <Compile Include="Controllers\DataController.cs" />
     <Compile Include="Controllers\DurandalController.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
@@ -155,10 +158,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\main.js" />
+    <Content Include="App\viewmodels\relayDemo.js" />
     <Content Include="App\viewmodels\loadData.js" />
     <Content Include="App\viewmodels\shell.js" />
     <Content Include="App\viewmodels\simple.js" />
     <Content Include="App\viewmodels\usingComputed.js" />
+    <Content Include="App\views\relayDemo.html" />
     <Content Include="App\views\usingComputed.html" />
     <Content Include="App\views\shell.html" />
     <Content Include="App\views\loadData.html" />

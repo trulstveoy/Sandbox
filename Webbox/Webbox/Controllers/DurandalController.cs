@@ -7,8 +7,9 @@ namespace Webbox.Controllers
     public ActionResult Index()
     {
         var user = User;
-        string name = user.Identity.Name;
+        string username = user.Identity.Name;
 
+        ViewBag.Username = username;
         return View();
     }
   }

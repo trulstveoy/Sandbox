@@ -11,6 +11,7 @@
                 { route: '', id: "simple", title: 'Simple', moduleId: 'viewmodels/simple', nav: true },
                 { route: 'loadData', id: "loadData", title: 'LoadData', moduleId: 'viewmodels/loadData', nav: true },
                 { route: 'usingComputed', id: "usingComputed", title: 'UsingComputed', moduleId: 'viewmodels/usingComputed', nav: true },
+                { route: 'relayDemo', id: "relayDemo", title: 'RelayDemo', moduleId: 'viewmodels/relayDemo', nav: true },
             ]).buildNavigationModel();
             
             return router.activate();
