@@ -1,22 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Principal;
-using System.Web;
+﻿using System.Security.Claims;
 
 namespace DevSTS.Security
 {
-    public class CustomIdentity : IIdentity
+    public class CustomIdentity : ClaimsIdentity
     {
-        public string Name { get; private set; }
-        public string AuthenticationType { get; private set; }
-        public bool IsAuthenticated { get; private set; }
+        private readonly string _name;
+        public override string Name { get { return _name; } }
+
+        private readonly bool _isAuthenticated;
+        public override bool IsAuthenticated { get { return _isAuthenticated; } }
 
         public CustomIdentity(string name)
         {
-            Name = name;
-            AuthenticationType = "Custom";
-            IsAuthenticated = true;
+            _name = name;
+            _isAuthenticated = true;
         }
     }
 }

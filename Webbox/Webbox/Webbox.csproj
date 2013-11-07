@@ -206,6 +206,7 @@
     <Content Include="Scripts\durandal\transitions\entrance.js" />
     <Content Include="Scripts\durandal\viewEngine.js" />
     <Content Include="Scripts\durandal\viewLocator.js" />
+    <Content Include="NLog.config" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\glimpse-knockout.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
@@ -256,6 +257,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\font\FontAwesome.otf" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Webbox.Core.Web\Webbox.Core.Web.csproj">
+      <Project>{d8356c02-2254-4c7a-8afc-04e5a9c43e82}</Project>
+      <Name>Webbox.Core.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Webbox.Core\Webbox.Core.csproj">
+      <Project>{b9318d76-a1a6-4799-92a4-4e8ef40602b4}</Project>
+      <Name>Webbox.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
