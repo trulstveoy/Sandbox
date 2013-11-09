@@ -26,6 +26,11 @@ namespace Webbox.Core.Logging
 
             Instance = LogManager.GetCurrentClassLogger();
         }
+
+        public static Logger LogFor(string name)
+        {
+            return LogManager.GetLogger(name);
+        }
     }
 }
 

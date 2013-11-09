@@ -1,5 +1,5 @@
-﻿define(['plugins/router', 'durandal/app'], function (router, app) {
-    return {
+﻿define(['plugins/router', 'durandal/app', 'core/logger'], function (router, app, logger) {
+    return  {
         router: router,
         search: function() {
             //It's really easy to show a message box.
@@ -7,11 +7,16 @@
             app.showMessage('Search not yet implemented...');
         },
         activate: function () {
+            var log = logger.get("shell.js");
+            
+            log.debug("Shell activaiting")
+
             router.map([
                 { route: '', id: "simple", title: 'Simple', moduleId: 'viewmodels/simple', nav: true },
                 { route: 'loadData', id: "loadData", title: 'LoadData', moduleId: 'viewmodels/loadData', nav: true },
                 { route: 'usingComputed', id: "usingComputed", title: 'UsingComputed', moduleId: 'viewmodels/usingComputed', nav: true },
                 { route: 'relayDemo', id: "relayDemo", title: 'RelayDemo', moduleId: 'viewmodels/relayDemo', nav: true },
+                { route: 'composition', id: "composition", title: 'Composition', moduleId: 'viewmodels/composition/container', nav: true },
             ]).buildNavigationModel();
             
             return router.activate();

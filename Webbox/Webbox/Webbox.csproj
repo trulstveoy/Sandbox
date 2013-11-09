@@ -150,6 +150,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\LoggingController.cs" />
     <Compile Include="Controllers\RelayController.cs" />
     <Compile Include="Controllers\DataController.cs" />
     <Compile Include="Controllers\DurandalController.cs" />
@@ -158,15 +159,19 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\LogContent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\core\logger.js" />
     <Content Include="App\main.js" />
+    <Content Include="App\viewmodels\Composition\container.js" />
     <Content Include="App\viewmodels\relayDemo.js" />
     <Content Include="App\viewmodels\loadData.js" />
     <Content Include="App\viewmodels\shell.js" />
     <Content Include="App\viewmodels\simple.js" />
     <Content Include="App\viewmodels\usingComputed.js" />
+    <Content Include="App\views\Composition\container.html" />
     <Content Include="App\views\relayDemo.html" />
     <Content Include="App\views\usingComputed.html" />
     <Content Include="App\views\shell.html" />
