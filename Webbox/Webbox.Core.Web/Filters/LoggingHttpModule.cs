@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Web;
 using NLog;
-using LogFactory = Webbox.Core.Logging.LogFactory;
+using Webbox.Core.Logging;
 
 namespace Webbox.Core.Web.Filters
 {
     public class LoggingHttpModule : IHttpModule
     {
-        private static readonly Logger Log = LogFactory.Instance;
+        private static readonly Logger Log = WebboxLog.Instance;
         public void Init(HttpApplication application)
         {
             application.EndRequest += OnApplicationEndRequest;
