@@ -1,9 +1,10 @@
 ﻿define(function () {
-    var that = this;
-    that.url = "/api/logging";
+    
+    var url = "/api/logging";
 
     return {
         get: function (name) {
+            var that = this;
             that.name = name;
             return {
                 debug: function (message) {
@@ -13,7 +14,7 @@
                         type: "POST",
                         dataType: "json",
                         data: {
-                            name: that.name,
+                            name: 'app:' + that.name,
                             severity: "Debug",
                             message: that.message
                         }

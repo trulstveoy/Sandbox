@@ -7,7 +7,7 @@ namespace Webbox.Core.Web.Filters
 {
     public class LoggingHttpModule : IHttpModule
     {
-        private static readonly Logger Log = WebboxLog.Instance;
+        private static readonly Logger Log = WebboxLog.LogFor<LoggingHttpModule>();
         public void Init(HttpApplication application)
         {
             application.EndRequest += OnApplicationEndRequest;

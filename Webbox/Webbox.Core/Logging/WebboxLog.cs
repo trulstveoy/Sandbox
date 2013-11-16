@@ -6,7 +6,7 @@ namespace Webbox.Core.Logging
 {
     public static class WebboxLog
     {
-        public static Logger Instance { get; private set; }
+        //public static Logger Instance { get; private set; }
         static WebboxLog()
         {
             #if DEBUG
@@ -24,7 +24,12 @@ namespace Webbox.Core.Logging
 
             LogManager.ReconfigExistingLoggers();
 
-            Instance = LogManager.GetCurrentClassLogger();
+            //Instance = LogManager.GetCurrentClassLogger();
+        }
+
+        public static Logger LogFor<T>()
+        {
+            return LogManager.GetLogger(typeof (T).FullName);
         }
 
         public static Logger LogFor(string name)

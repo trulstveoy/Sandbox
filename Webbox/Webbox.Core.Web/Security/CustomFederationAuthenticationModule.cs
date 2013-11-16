@@ -13,7 +13,7 @@ namespace Webbox.Core.Web.Security
 {
     public class CustomFederationAuthenticationModule : WSFederationAuthenticationModule
     {
-        private static readonly Logger Log = WebboxLog.Instance;
+        private static readonly Logger Log = WebboxLog.LogFor<CustomFederationAuthenticationModule>();
 
         protected override void OnAuthenticateRequest(object sender, EventArgs args)
         {

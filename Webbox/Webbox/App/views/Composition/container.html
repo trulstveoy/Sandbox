@@ -1,11 +1,12 @@
 ﻿<section>
-    <h2>Load data from web api</h2>
-    
-    <div>
-        <p><button id="loadData" data-bind="click: loadData">Load data</button></p>
-        <ul id="items" data-bind="foreach: items">
-            <li>Foo: <span data-bind="text: number"></span></li>
-        </ul>
+    <h2>Composition</h2>
+    <div class="row-fluid">
+        <div class="span4">
+            <div data-bind="compose:'viewmodels/composition/leftview'" />
+        </div>
+        <div class="span4">
+            <div data-bind="compose:'viewmodels/composition/rightview'" />
+        </div>
     </div>
   
 </section>

@@ -15,7 +15,7 @@ namespace Webbox.Controllers
 {
     public class RelayController : ApiController
     {
-        private static readonly Logger Log = WebboxLog.Instance;
+        private static readonly Logger Log = WebboxLog.LogFor<RelayController>();
 
         // GET api/data
         public async Task<List<Item>> Get()

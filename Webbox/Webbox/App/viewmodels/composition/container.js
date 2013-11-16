@@ -1,42 +1,37 @@
-﻿define(['plugins/router', 'core/logger'],
-    function (router, logger) {
-        var log = logger.get("container.js");
-        // Internal properties and functions
-
-        var items = ko.observableArray();
-
-        function loadData() {
-            var url = "/api/data";
-
-            $.ajax({
-                url: url,
-                dataType: "json",
-                success: function (result) {
-                    ko.utils.arrayPushAll(items, result);
-                }
-            });
-        }
-
-
-        // Reveal the bindable properties and functions
+﻿define(['plugins/router', 'core/logger', 'viewmodels/composition/leftview', 'viewmodels/composition/rightview'],
+    function (router, logger, leftview, rightview) {
+        var log = logger.get('container.js');
+       
         var vm = {
             activate: activate,
+            deactivate: deactivate,
             goBack: goBack,
-            title: 'loadData',
-
-            items: items,
-
-            loadData: loadData            
+            title: 'composition',
+            leftview: leftview,
+            rightview: rightview
+       
         };
-
+        
         return vm;
         
-        function activate(id, querystring) {
-            log.debug("composition/container activating");
-            
-            //TODO: Initialize lookup data here.
+        function activate() {
+            log.debug('composition/container activating');
 
-            //TODO: Get the data for this viewmodel, return a promise.
+            var communicator = function() {
+                rightview.update("foobar");
+            };
+            
+            return $.when(
+               leftview.activate(communicator),
+               rightview.activate()
+           ).then(function () {
+               log.debug('the do shit');
+           });
+            
+        }
+        
+        function deactivate() {
+            log.debug('composition/container deactivating');
         }
 
         function goBack(complete) {

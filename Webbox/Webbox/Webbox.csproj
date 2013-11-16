@@ -39,18 +39,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Glimpse.AspNet">
-      <HintPath>..\packages\Glimpse.AspNet.1.3.1\lib\net45\Glimpse.AspNet.dll</HintPath>
-    </Reference>
-    <Reference Include="Glimpse.Core">
-      <HintPath>..\packages\Glimpse.1.4.2\lib\net45\Glimpse.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Glimpse.Knockout">
-      <HintPath>..\packages\glimpse-knockout.0.1.5\lib\net40\Glimpse.Knockout.dll</HintPath>
-    </Reference>
-    <Reference Include="Glimpse.Mvc4">
-      <HintPath>..\packages\Glimpse.Mvc4.1.3.3\lib\net40\Glimpse.Mvc4.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="NLog, Version=2.1.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -154,7 +142,6 @@
     <Compile Include="Controllers\RelayController.cs" />
     <Compile Include="Controllers\DataController.cs" />
     <Compile Include="Controllers\DurandalController.cs" />
-    <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -165,13 +152,17 @@
   <ItemGroup>
     <Content Include="App\core\logger.js" />
     <Content Include="App\main.js" />
-    <Content Include="App\viewmodels\Composition\container.js" />
+    <Content Include="App\viewmodels\composition\container.js" />
+    <Content Include="App\viewmodels\composition\rightview.js" />
+    <Content Include="App\viewmodels\composition\leftview.js" />
     <Content Include="App\viewmodels\relayDemo.js" />
     <Content Include="App\viewmodels\loadData.js" />
     <Content Include="App\viewmodels\shell.js" />
     <Content Include="App\viewmodels\simple.js" />
     <Content Include="App\viewmodels\usingComputed.js" />
-    <Content Include="App\views\Composition\container.html" />
+    <Content Include="App\views\composition\rightview.html" />
+    <Content Include="App\views\composition\leftview.html" />
+    <Content Include="App\views\composition\container.html" />
     <Content Include="App\views\relayDemo.html" />
     <Content Include="App\views\usingComputed.html" />
     <Content Include="App\views\shell.html" />
@@ -217,7 +208,6 @@
     <Content Include="Scripts\durandal\viewLocator.js" />
     <Content Include="NLog.config" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
-    <Content Include="Scripts\glimpse-knockout.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\knockout-2.3.0.debug.js" />
