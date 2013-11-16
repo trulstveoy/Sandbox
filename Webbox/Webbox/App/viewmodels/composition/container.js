@@ -8,7 +8,10 @@
             goBack: goBack,
             title: 'composition',
             leftview: leftview,
-            rightview: rightview
+            rightview: rightview,
+            updateMessage: function(message) {
+                rightview.updateMessage(message);
+            }
        
         };
         
@@ -16,18 +19,6 @@
         
         function activate() {
             log.debug('composition/container activating');
-
-            var communicator = function() {
-                rightview.update("foobar");
-            };
-            
-            return $.when(
-               leftview.activate(communicator),
-               rightview.activate()
-           ).then(function () {
-               log.debug('the do shit');
-           });
-            
         }
         
         function deactivate() {

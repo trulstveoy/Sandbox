@@ -6,8 +6,8 @@
             activate: activate,
             goBack: goBack,
             title: 'rightview',
-            name: ko.observable(),
-            update : update
+            message: ko.observable(),
+            updateMessage : updateMessage
           
         };
 
@@ -18,8 +18,8 @@
             
         }
         
-        function update(str) {
-            vm.name(str);
+        function updateMessage(message) {
+            vm.message(message);
         }
 
         function goBack(complete) {

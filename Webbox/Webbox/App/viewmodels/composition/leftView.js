@@ -1,7 +1,7 @@
 ﻿define(['plugins/router', 'core/logger'],
     function (router, logger) {
         var log = logger.get("leftview.js");
-        var onclick = undefined;
+        var updateMessage;
         
         var vm = {
             activate: activate,
@@ -16,7 +16,7 @@
         
         function activate(value) {
             log.debug('composition/leftview activating');
-            onclick = value;
+            updateMessage = value;
         }
         
         function deactivate() {
@@ -25,7 +25,7 @@
         
         function click() {
             log.debug('button clicked');
-            onclick();
+            updateMessage('buttons was clicked in left view');
         }
 
         function goBack(complete) {
