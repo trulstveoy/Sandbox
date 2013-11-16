@@ -2,16 +2,17 @@
     function (router, logger) {
         var log = logger.get("leftview.js");
         var updateMessage;
-        
+        var isVisible = ko.observable(true);
+
         var vm = {
             activate: activate,
             deactivate: deactivate,
             goBack: goBack,
             title: 'leftview',
-            click: click
-       
+            click: click,
+            showHide: showHide,
+            isVisible: isVisible
         };
-
         return vm;
         
         function activate(value) {
@@ -26,6 +27,10 @@
         function click() {
             log.debug('button clicked');
             updateMessage('buttons was clicked in left view');
+        }
+        
+        function showHide() {
+            isVisible(!isVisible());
         }
 
         function goBack(complete) {

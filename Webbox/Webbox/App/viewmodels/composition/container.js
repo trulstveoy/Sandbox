@@ -11,6 +11,9 @@
             rightview: rightview,
             updateMessage: function(message) {
                 rightview.updateMessage(message);
+            },
+            showHideLeft: function() {
+                leftview.showHide();
             }
        
         };
