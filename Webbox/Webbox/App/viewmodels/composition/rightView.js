@@ -1,6 +1,6 @@
 ﻿define(['plugins/router', 'core/logger'],
-    function (router, logger) {
-        var log = logger.get("rightview.js");
+    function (router, Logger) {
+        var log = new Logger("rightview.js");
         
         var vm = {
             activate: activate,

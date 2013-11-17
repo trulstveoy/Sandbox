@@ -1,6 +1,6 @@
 ﻿define(['plugins/router', 'core/logger', 'viewmodels/composition/leftview', 'viewmodels/composition/rightview'],
-    function (router, logger, leftview, rightview) {
-        var log = logger.get('container.js');
+    function (router, Logger, leftview, rightview) {
+        var log = new Logger('container.js');
        
         var vm = {
             activate: activate,

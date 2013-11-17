@@ -1,6 +1,7 @@
 ﻿define(['plugins/router', 'core/logger'],
-    function (router, logger) {
-        var log = logger.get("leftview.js");
+    function (router, Logger) {
+        var log = new Logger("leftview.js");
+
         var updateMessage;
         var isVisible = ko.observable(true);
 

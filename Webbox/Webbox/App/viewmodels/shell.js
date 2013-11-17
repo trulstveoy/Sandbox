@@ -1,4 +1,4 @@
-﻿define(['plugins/router', 'durandal/app', 'core/logger'], function (router, app, logger) {
+﻿define(['plugins/router', 'durandal/app', 'core/logger'], function (router, app, Logger) {
     return  {
         router: router,
         search: function() {
@@ -7,7 +7,7 @@
             app.showMessage('Search not yet implemented...');
         },
         activate: function () {
-            var log = logger.get("shell.js");
+            var log = new Logger("shell.js");
             
             log.debug("Shell activaiting")
 
