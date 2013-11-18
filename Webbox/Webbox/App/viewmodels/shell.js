@@ -17,6 +17,7 @@
                 { route: 'usingComputed', id: "usingComputed", title: 'UsingComputed', moduleId: 'viewmodels/usingComputed', nav: true },
                 { route: 'relayDemo', id: "relayDemo", title: 'RelayDemo', moduleId: 'viewmodels/relayDemo', nav: true },
                 { route: 'composition', id: "composition", title: 'Composition', moduleId: 'viewmodels/composition/container', nav: true },
+                { route: 'promise', id: "promise", title: 'Promise', moduleId: 'viewmodels/promise', nav: true },
             ]).buildNavigationModel();
             
             return router.activate();
