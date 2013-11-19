@@ -12,6 +12,7 @@
             waitMultiple: waitMultiple,
             waitValue: waitValue,
             waitMultiValue: waitMultiValue,
+            waitChained: waitChained,
             items: items
         };
 
@@ -44,6 +45,17 @@
                 items.push(val1);
                 items.push(val2);
             });
+        }
+        
+        function waitChained() {
+            load(500, 'step 1').then(function(msg) {
+                items.push(msg);
+                load(500, 'step 2').then(function(msg2) {
+                    items.push(msg2);
+                });
+            } );
+             
+
         }
         
         function wait(ms) {
