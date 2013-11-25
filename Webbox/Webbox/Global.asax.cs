@@ -5,6 +5,7 @@ using System.Web.Routing;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using StackExchange.Profiling;
+using Webbox.Core.Web.Profiling;
 
 namespace Webbox
 {
@@ -12,24 +13,19 @@ namespace Webbox
     {
         protected void Application_Start()
         {
+
+
             AreaRegistration.RegisterAllAreas();
 
             ConfigureCamelCaseJson();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+
+            System.Web.Http.GlobalConfiguration.Configuration.Filters.Add(new ProfilingActionApiFilter());
+
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             DurandalBundleConfig.RegisterBundles(BundleTable.Bundles);
-        }
-
-        protected void Application_BeginRequest()
-        {
-            MiniProfiler.Start();
-        }
-
-        protected void Application_EndRequest()
-        {
-            MiniProfiler.Stop();
         }
 
         private static void ConfigureCamelCaseJson()

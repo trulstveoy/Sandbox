@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using Webbox.Core.Web.Profiling;
 
 namespace Webbox
 {
@@ -7,6 +8,8 @@ namespace Webbox
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            filters.Add(new ProfilingActionFilter());
+            //filters.Add(new ProfilingActionApiFilter());
         }
     }
 }
