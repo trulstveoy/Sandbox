@@ -13,19 +13,21 @@ namespace Webbox
     {
         protected void Application_Start()
         {
-
-
             AreaRegistration.RegisterAllAreas();
 
             ConfigureCamelCaseJson();
+            ConfigureProfiling();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-
-            System.Web.Http.GlobalConfiguration.Configuration.Filters.Add(new ProfilingActionApiFilter());
-
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             DurandalBundleConfig.RegisterBundles(BundleTable.Bundles);
+        }
+
+        private void ConfigureProfiling()
+        {
+            GlobalFilters.Filters.Add(new ProfilingActionFilter());
+            GlobalConfiguration.Configuration.Filters.Add(new ProfilingActionApiFilter());
         }
 
         private static void ConfigureCamelCaseJson()

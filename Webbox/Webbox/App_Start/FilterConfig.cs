@@ -8,8 +8,6 @@ namespace Webbox
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
-            filters.Add(new ProfilingActionFilter());
-            //filters.Add(new ProfilingActionApiFilter());
         }
     }
 }
