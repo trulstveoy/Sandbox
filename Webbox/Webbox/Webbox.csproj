@@ -39,6 +39,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MiniProfiler">
       <HintPath>..\packages\MiniProfiler.2.1.0\lib\net40\MiniProfiler.dll</HintPath>
@@ -142,6 +150,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\LoggingController.cs" />
+    <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Controllers\RelayController.cs" />
     <Compile Include="Controllers\DataController.cs" />
     <Compile Include="Controllers\DurandalController.cs" />
@@ -158,6 +167,7 @@
     <Content Include="App\viewmodels\composition\container.js" />
     <Content Include="App\viewmodels\composition\rightview.js" />
     <Content Include="App\viewmodels\composition\leftview.js" />
+    <Content Include="App\viewmodels\queryDb.js" />
     <Content Include="App\viewmodels\relayDemo.js" />
     <Content Include="App\viewmodels\loadData.js" />
     <Content Include="App\viewmodels\shell.js" />
@@ -166,6 +176,7 @@
     <Content Include="App\views\composition\rightview.html" />
     <Content Include="App\views\composition\leftview.html" />
     <Content Include="App\views\composition\container.html" />
+    <Content Include="App\views\queryDb.html" />
     <Content Include="App\views\relayDemo.html" />
     <Content Include="App\views\usingComputed.html" />
     <Content Include="App\views\shell.html" />
@@ -268,6 +279,10 @@
     <ProjectReference Include="..\Webbox.Core\Webbox.Core.csproj">
       <Project>{b9318d76-a1a6-4799-92a4-4e8ef40602b4}</Project>
       <Name>Webbox.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Webbox.DataAccess\Webbox.DataAccess.csproj">
+      <Project>{236A1E69-5161-4800-8F0E-0C1B4404A8DC}</Project>
+      <Name>Webbox.DataAccess</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

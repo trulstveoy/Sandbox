@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using StackExchange.Profiling;
 using Webbox.Core.Web.Profiling;
+using Webbox.DataAccess;
 
 namespace Webbox
 {
