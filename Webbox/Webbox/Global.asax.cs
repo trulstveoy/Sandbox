@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.Collections;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -29,6 +30,7 @@ namespace Webbox
         {
             GlobalFilters.Filters.Add(new ProfilingActionFilter());
             GlobalConfiguration.Configuration.Filters.Add(new ProfilingActionApiFilter());
+            StackExchange.Profiling.EntityFramework6.MiniProfilerEF6.Initialize();
         }
 
         private static void ConfigureCamelCaseJson()
