@@ -21,7 +21,7 @@ namespace Webbox.Controllers
         public async Task<List<Item>> Get()
         {
             Log.Debug("About to relay...");
-            const string url = "http://localhost:5003/api/home";
+            const string url = "https://localhost:5003/api/home";
 
             try
             {
