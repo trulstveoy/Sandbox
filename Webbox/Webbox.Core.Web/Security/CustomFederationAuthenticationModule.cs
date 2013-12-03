@@ -32,6 +32,8 @@ namespace Webbox.Core.Web.Security
                     return;
                 }
 
+                Log.Debug("Using federated authentication");
+
                 base.OnAuthenticateRequest(sender, args);
 
                 SetCookie(application);

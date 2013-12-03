@@ -1,0 +1,12 @@
+﻿<section>
+    <h2>Use MonogDB</h2>
+    
+    <div>
+        <p><button data-bind="click: populate">Populate Mongo</button></p>
+        <p><button data-bind="click: getCustomerNames">Get customer names</button></p>
+        <ul id="items" data-bind="foreach: customerNames">
+            <li><span data-bind="text: $data"></span></li>
+        </ul>
+    </div>
+  
+</section>

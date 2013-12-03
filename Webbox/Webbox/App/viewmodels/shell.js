@@ -19,6 +19,7 @@
                 { route: 'composition', id: "composition", title: 'Composition', moduleId: 'viewmodels/composition/container', nav: true },
                 { route: 'promise', id: "promise", title: 'Promise', moduleId: 'viewmodels/promise', nav: true },
                 { route: 'queryDb', id: "queryDb", title: 'Query DB', moduleId: 'viewmodels/queryDb', nav: true },
+                { route: 'useMongo', id: "useMongo", title: 'Use Mongo', moduleId: 'viewmodels/useMongo', nav: true },
             ]).buildNavigationModel();
             
             return router.activate();
