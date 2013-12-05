@@ -4,6 +4,20 @@
 
         var customerNames = ko.observableArray();
 
+        function clear(){
+            var url = "https://localhost:5002/api/mongo/clear";
+
+            customerNames.removeAll();
+
+            log.debug('sending populate ajax request');
+
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: "json"
+            });
+        }
+
         function populate() {
             var url = "https://localhost:5002/api/mongo/populate";
             
@@ -38,6 +52,7 @@
             goBack: goBack,
             title: 'useMongo',
             customerNames: customerNames,
+            clear: clear,
             populate: populate,
             getCustomerNames: getCustomerNames
         };

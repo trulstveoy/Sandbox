@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webbox.MongoAccess", "Webbo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webbox.Rpc", "Webbox.Rpc\Webbox.Rpc.csproj", "{10D1A0B4-AC4A-46A7-9F12-1A2CA05AFE71}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webbox.Domain", "Webbox.Domain\Webbox.Domain.csproj", "{AF485AD3-81AE-41B5-AE8C-725F0264142D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{10D1A0B4-AC4A-46A7-9F12-1A2CA05AFE71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10D1A0B4-AC4A-46A7-9F12-1A2CA05AFE71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10D1A0B4-AC4A-46A7-9F12-1A2CA05AFE71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF485AD3-81AE-41B5-AE8C-725F0264142D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF485AD3-81AE-41B5-AE8C-725F0264142D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF485AD3-81AE-41B5-AE8C-725F0264142D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF485AD3-81AE-41B5-AE8C-725F0264142D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

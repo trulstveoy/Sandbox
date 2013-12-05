@@ -129,7 +129,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Global.asax" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -152,6 +154,10 @@
     <ProjectReference Include="..\Webbox.Core\Webbox.Core.csproj">
       <Project>{b9318d76-a1a6-4799-92a4-4e8ef40602b4}</Project>
       <Name>Webbox.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Webbox.Domain\Webbox.Domain.csproj">
+      <Project>{AF485AD3-81AE-41B5-AE8C-725F0264142D}</Project>
+      <Name>Webbox.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Webbox.MongoAccess\Webbox.MongoAccess.csproj">
       <Project>{ED02E4E8-2269-4EB9-AAF9-033B4F2C4917}</Project>

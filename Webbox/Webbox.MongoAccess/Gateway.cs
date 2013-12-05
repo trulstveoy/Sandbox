@@ -1,23 +1,37 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Serialization;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
-using Webbox.MongoAccess.Dto;
+using Webbox.Domain;
+using Webbox.Domain.Dto;
 
 namespace Webbox.MongoAccess
 {
     public class Gateway
     {
-        public void PopulateMongo()
+        public void DropCustomers()
         {
             const string connectionString = "mongodb://localhost";
             var client = new MongoClient(connectionString);
             var server = client.GetServer();
             var database = server.GetDatabase("webbox");
             var collection = database.GetCollection<Customer>("customers");
+            collection.Drop();
+        }
 
-            var customer = new Customer() {Name = "Foobar"};
-            collection.Insert(customer);
+        public void PopulateCustomers()
+        {
+            const string connectionString = "mongodb://localhost";
+            var client = new MongoClient(connectionString);
+            var server = client.GetServer();
+            var database = server.GetDatabase("webbox");
+            var collection = database.GetCollection<Customer>("customers");
+            
+            foreach (var customer in DomainGenerator.CreateCustomers(20))
+            {
+                collection.Insert(customer);
+            }
         }
 
         public List<Customer> GetCustomers()
@@ -27,11 +41,14 @@ namespace Webbox.MongoAccess
             var server = client.GetServer();
             var database = server.GetDatabase("webbox");
             var collection = database.GetCollection<Customer>("customers");
-
-            var query = Query<Customer>.EQ(e => e.Name, "Foobar");
-            var cursor = collection.Find(query);
+            var cursor = collection.FindAll();
 
             return cursor.ToList();
+        }
+
+        public List<Customer> SearchCustomers(string phrase)
+        {
+            return null;
         }
     }
 }

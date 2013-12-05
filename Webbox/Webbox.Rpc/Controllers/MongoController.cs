@@ -11,12 +11,20 @@ namespace Webbox.Rpc.Controllers
     {
         private static readonly Logger Log = WebboxLog.LogFor<MongoController>();
 
+        public void Clear()
+        {
+            Log.Debug("About to clear...");
+            var gateway = new Gateway();
+
+            gateway.DropCustomers();
+        }
+
         public void Populate()
         {
-            Log.Debug("About to populate Mongo");
+            Log.Debug("About to populate Mongo with customers");
 
             var gateway = new Gateway();
-            gateway.PopulateMongo();
+            gateway.PopulateCustomers();
         }
 
         public IEnumerable<string> GetCustomerNames()
