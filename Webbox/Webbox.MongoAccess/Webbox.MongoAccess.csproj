@@ -36,6 +36,9 @@
     <Reference Include="MongoDB.Driver">
       <HintPath>..\packages\mongocsharpdriver.1.8.3\lib\net35\MongoDB.Driver.dll</HintPath>
     </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.2.1.0\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -52,6 +55,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Webbox.Core\Webbox.Core.csproj">
+      <Project>{B9318D76-A1A6-4799-92A4-4E8EF40602B4}</Project>
+      <Name>Webbox.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Webbox.Domain\Webbox.Domain.csproj">
       <Project>{AF485AD3-81AE-41B5-AE8C-725F0264142D}</Project>
       <Name>Webbox.Domain</Name>
