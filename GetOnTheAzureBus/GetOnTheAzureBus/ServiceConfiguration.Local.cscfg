@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="GetOnTheAzureBus" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="3" osVersion="*" schemaVersion="2013-10.2.2">
+  <Role name="BusWorkerRole">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=http;AccountName=trulstveoylogging;AccountKey=nWfD5rAZRBk8sZnF+2oE/wFm9/XXu8s/T09k8EMYtN8t0rB7vW935TGnHrCF8FEjp39jzQ8H0iWF5I/4E/J/zg==" />
+      <Setting name="Microsoft.ServiceBus.ConnectionString" value="Endpoint=sb://trulstveoymasstransit.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=IRxqwdg3TbkeXOL6qqe+4zZ0d1Lvd6mR/GAFHifB8u4=" />
+      <Setting name="StorageConnectionString" value="DefaultEndpointsProtocol=http;AccountName=trulstveoylogging;AccountKey=nWfD5rAZRBk8sZnF+2oE/wFm9/XXu8s/T09k8EMYtN8t0rB7vW935TGnHrCF8FEjp39jzQ8H0iWF5I/4E/J/zg==" />
+    </ConfigurationSettings>
+  </Role>
+</ServiceConfiguration>

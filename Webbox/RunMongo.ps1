@@ -1,1 +1,0 @@
-Start-Process C:\Apps\MongoDB-2.4.8\bin\mongod.exe -ArgumentList "--dbpath C:\Apps\MongoDB-2.4.8\Webbox\data"
