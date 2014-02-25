@@ -1,0 +1,43 @@
+﻿@using InlineBootstrap.Tools
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>InlineBootstrap</title>
+    @Html.InlineStylesheet("~/Content/bootstrap-theme.min.css")
+    @Html.InlineStylesheet("~/Content/bootstrap.min.css")
+    </head>
+    <body>
+        <div class="container" id="bodyContent">
+            <h1>Hello world<small>Secondary text</small></h1>
+            <p>Foo bar foo bar foo bar foo bar foo bar</p>
+            
+            <div class="row">
+                <div class="col-md-1">.col-md-1</div>
+                <div class="col-md-1">.col-md-1</div>
+                <div class="col-md-1">.col-md-1</div>
+                <div class="col-md-1">.col-md-1</div>
+                <div class="col-md-1">.col-md-1</div>
+                <div class="col-md-1">.col-md-1</div>
+                <div class="col-md-1">.col-md-1</div>
+                <div class="col-md-1">.col-md-1</div>
+                <div class="col-md-1">.col-md-1</div>
+                <div class="col-md-1">.col-md-1</div>
+                <div class="col-md-1">.col-md-1</div>
+                <div class="col-md-1">.col-md-1</div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">.col-md-8</div>
+                <div class="col-md-4">.col-md-4</div>
+            </div>
+            <table>
+                
+            </table>
+        </div>
+        @Html.InlineScriptBlock("~/Scripts/jquery-1.9.1.min.js")
+        @Html.InlineScriptBlock("~/Scripts/bootstrap.min.js")
+    </body>
+</html>
