@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Runner", "Runner\Runner.csproj", "{7C37D008-3727-4D44-9713-CBD573C9F096}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{28F537F7-8B2A-451E-B300-89288FBCE862}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{6DF07F14-FB1F-4F6C-AF46-C71587BF2826}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{B259CA03-2F06-41CA-8692-4FCA668217C4}"
+	ProjectSection(SolutionItems) = preProject
+		Up.sql = Up.sql
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C37D008-3727-4D44-9713-CBD573C9F096}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C37D008-3727-4D44-9713-CBD573C9F096}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C37D008-3727-4D44-9713-CBD573C9F096}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C37D008-3727-4D44-9713-CBD573C9F096}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28F537F7-8B2A-451E-B300-89288FBCE862}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28F537F7-8B2A-451E-B300-89288FBCE862}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28F537F7-8B2A-451E-B300-89288FBCE862}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28F537F7-8B2A-451E-B300-89288FBCE862}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

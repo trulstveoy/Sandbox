@@ -1,0 +1,27 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        Cookie!
+    </div>
+    <script src="/Scripts/jquery-2.1.0.js"></script>
+    <script src="/Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            var cookieValue = $.cookie("Auth");
+            alert(cookieValue);
+
+        });
+    </script>
+</body>
+</html>

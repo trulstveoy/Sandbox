@@ -3,7 +3,7 @@ open canopy
 open runner
 open System
 
-configuration.chromeDir <- System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location)
+//configuration.chromeDir <- System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location)
 
 //start an instance of the firefox browser
 start chrome 
@@ -13,24 +13,33 @@ start chrome
     //this is an F# function body, it's whitespace enforced
 
     //go to url
-    url "http://lefthandedgoat.github.io/canopy/testpages/"
+    url "http://durandaldemo.apphb.com/" 
+
+    //(element "h1").Text == "Surveys"
+
+
+    
+
+
+
+
 
     //assert that the element with an id of 'welcome' has
     //the text 'Welcome'
     "#welcome" == "Welcome"
-
-    //assert that the element with an id of 'firstName' has the value 'John'
-    "#firstName" == "John"
-
-    //change the value of element with
-    //an id of 'firstName' to 'Something Else'
-    "#firstName" << "Something Else"
-
-    //verify another element's value, click a button,
-    //verify the element is updated
-    "#button_clicked" == "button not clicked"
-    click "#button"
-    "#button_clicked" == "button clicked"
+//
+//    //assert that the element with an id of 'firstName' has the value 'John'
+//    "#firstName" == "John"
+//
+//    //change the value of element with
+//    //an id of 'firstName' to 'Something Else'
+//    "#firstName" << "Something Else"
+//
+//    //verify another element's value, click a button,
+//    //verify the element is updated
+//    "#button_clicked" == "button not clicked"
+//    click "#button"
+//    "#button_clicked" == "button clicked"
 
 //run all tests
 run()

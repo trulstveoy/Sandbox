@@ -1,0 +1,44 @@
+﻿USE [CodeFirstEF]
+GO
+
+drop table [dbo].[Category]
+GO
+drop table [dbo].[Order]
+GO
+drop table [dbo].[Product]
+GO
+
+CREATE TABLE [dbo].[Category](
+	[Id] [bigint] NOT NULL,
+	[Name] [nvarchar](250) NOT NULL,
+CONSTRAINT [PK_Category] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[Order](
+	[Id] [bigint] NOT NULL,
+	[Buyer] [nvarchar](250) NOT NULL,
+ CONSTRAINT [PK_Order] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[Product](
+	[Id] [bigint] NOT NULL,
+	[OrderId] [bigint] NOT NULL,
+	[Name] [nvarchar](250) NOT NULL,
+	[CategoryId] [bigint] NULL,
+ CONSTRAINT [PK_Product] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+
