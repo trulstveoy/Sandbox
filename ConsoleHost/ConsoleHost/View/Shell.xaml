@@ -4,31 +4,22 @@
         xmlns:view="clr-namespace:ConsoleHost.View"
         x:Class="ConsoleHost.View.Shell"
         Title="Shell" Height="350" Width="525" >
-    <Window.Resources>
-        <DataTemplate x:Key="Foo">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                
-                <StackPanel Orientation="Horizontal" Grid.Row="0">
-                    <Button Content="1234"></Button>
-                </StackPanel>
-                <view:HwndControl Path="..\..\..\TestApp\bin\debug\TestApp.exe" Grid.Row="1" />
-            </Grid>
-        </DataTemplate>
-    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Button Content="Abcd" Margin="5" Command="{Binding StartAllCommand}"/>
-            <Button Content="Dcba" Margin="5" Command="{Binding StopAllCommand}"/>
+            <Button Content="Start all" Margin="5" Command="{Binding StartAllCommand}"/>
+            <Button Content="Stop all" Margin="5" Command="{Binding StopAllCommand}"/>
         </StackPanel>
 
-        <ListView Grid.Row="1" ItemsSource="{Binding TheCollection}" ItemTemplate="{StaticResource Foo}" />
+        <ListView Grid.Row="1" ItemsSource="{Binding Containers}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <view:Container />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Window>

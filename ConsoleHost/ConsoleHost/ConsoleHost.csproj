@@ -35,7 +35,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -53,8 +56,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="View\Container.xaml.cs">
+      <DependentUpon>Container.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ContainerViewModel.cs" />
+    <Compile Include="View\HwndControl.cs" />
     <Compile Include="View\ShellViewModel.cs" />
-    <Page Include="View\HwndControl.xaml">
+    <Page Include="View\Container.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -70,9 +78,6 @@
     <Compile Include="Core\ObservableObject.cs" />
     <Compile Include="ProcessManager.cs" />
     <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="View\HwndControl.xaml.cs">
-      <DependentUpon>HwndControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
       <SubType>Code</SubType>

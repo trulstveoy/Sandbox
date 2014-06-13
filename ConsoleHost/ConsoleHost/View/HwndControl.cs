@@ -5,15 +5,10 @@ using System.Windows.Interop;
 
 namespace ConsoleHost.View
 {
-    public partial class HwndControl : HwndHost
+    public class HwndControl : HwndHost
     {
-        public HwndControl()
-        {
-            InitializeComponent();
-        }
-
         private Process _process;
-        public string Path { get; set; }
+        private string _path; 
 
         [DllImport("user32.dll")]
         private static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
@@ -29,11 +24,16 @@ namespace ConsoleHost.View
         private const int WS_THICKFRAME = 0x00040000;
         private const int WS_CHILD = 0x40000000;
 
+        public HwndControl(string path)
+        {
+            _path = path;
+        }
+
         protected override HandleRef BuildWindowCore(HandleRef hwndParent)
         {
-            Path = @"..\..\..\TestApp\bin\debug\TestApp.exe";
-            if (string.IsNullOrWhiteSpace(Path)) throw new InvalidOperationException("Path cannot be null or whitespace");
-            _process = ProcessManager.StartProcess(Path);
+            _path = @"..\..\..\TestApp\bin\debug\TestApp.exe";
+            if (string.IsNullOrWhiteSpace(_path)) throw new InvalidOperationException("Path cannot be null or whitespace");
+            _process = ProcessManager.StartProcess(_path);
 
             var handle = _process.MainWindowHandle;
 

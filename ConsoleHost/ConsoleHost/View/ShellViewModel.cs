@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Configuration;
 using System.Windows;
 using System.Windows.Input;
 using ConsoleHost.Core;
@@ -7,16 +8,15 @@ namespace ConsoleHost.View
 {
     public class ShellViewModel : ObservableObject
     {
-        private ObservableCollection<string> _theCollection;
-
-        public ObservableCollection<string> TheCollection
+        private ObservableCollection<ContainerViewModel> _containers;
+        public ObservableCollection<ContainerViewModel> Containers
         {
-            get { return _theCollection; }
+            get { return _containers; }
             set
             {
-                if (Equals(value, _theCollection)) return;
-                _theCollection = value;
-                OnPropertyChanged("TheCollection");
+                if (Equals(value, _containers)) return;
+                _containers = value;
+                OnPropertyChanged("Containers");
             }
         }
 
@@ -27,7 +27,10 @@ namespace ConsoleHost.View
             {
                 return new DelegateCommand(() =>
                 {
-                    TheCollection.Add("abc");
+                    foreach (var container in Containers)
+                    {
+                        container.StartCommand.Execute(null);
+                    }
                 });
             }
         }
@@ -38,17 +41,26 @@ namespace ConsoleHost.View
             {
                 return new DelegateCommand(() =>
                 {
-                    MessageBox.Show("barfoo");
+                    foreach (var container in Containers)
+                    {
+                        container.StopCommand.Execute(null);
+                    }
                 });
             }
         }
 
         public ShellViewModel()
         {
-            TheCollection = new ObservableCollection<string>();
-            
-            //TheCollection.Add("def");
-            //TheCollection.Add("ghi");
+            Containers = new ObservableCollection<ContainerViewModel>();
+
+            var paths = ConfigurationManager.AppSettings.Get("Paths").Split(';');
+            foreach (var path in paths)
+            {
+                var containerViewModel = new ContainerViewModel();
+                containerViewModel.Path = path;
+                containerViewModel.Name = System.IO.Path.GetFileName(path);
+                Containers.Add(containerViewModel);
+            }
         }
     }
 }
