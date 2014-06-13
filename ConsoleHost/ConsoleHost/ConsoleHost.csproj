@@ -54,7 +54,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="View\ShellViewModel.cs" />
-    <Page Include="View\Container.xaml">
+    <Page Include="View\HwndControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -70,8 +70,8 @@
     <Compile Include="Core\ObservableObject.cs" />
     <Compile Include="ProcessManager.cs" />
     <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="View\Container.xaml.cs">
-      <DependentUpon>Container.xaml</DependentUpon>
+    <Compile Include="View\HwndControl.xaml.cs">
+      <DependentUpon>HwndControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>

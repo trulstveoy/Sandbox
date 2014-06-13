@@ -15,7 +15,7 @@
                 <StackPanel Orientation="Horizontal" Grid.Row="0">
                     <Button Content="1234"></Button>
                 </StackPanel>
-                <view:Container Path="..\..\..\TestApp\bin\debug\TestApp.exe" Grid.Row="1" />
+                <view:HwndControl Path="..\..\..\TestApp\bin\debug\TestApp.exe" Grid.Row="1" />
             </Grid>
         </DataTemplate>
     </Window.Resources>
